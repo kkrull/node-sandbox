@@ -1,0 +1,15 @@
+{
+  "name": "webpack-basic",
+  "version": "1.0.0",
+  "description": "Basic webpack server",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "webpack ./entry.js bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kyle Krull",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.13.2"
+  }
+}

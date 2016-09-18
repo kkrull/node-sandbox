@@ -4,7 +4,7 @@
   "description": "Basic webpack server",
   "main": "index.js",
   "scripts": {
-    "bundle": "webpack ./entry.js bundle.js",
+    "webpack": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kyle Krull",

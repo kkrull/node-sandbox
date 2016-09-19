@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel -d lib src/*",
+    "clean": "rm -rf lib",
     "test": "node lib/src/es2015.js"
   },
   "author": "Kyle Krull",
@@ -12,5 +13,8 @@
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-preset-es2015": "^6.14.0"
+  },
+  "babel": { 
+    "presets": ["es2015"] 
   }
 }

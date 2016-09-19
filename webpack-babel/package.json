@@ -4,13 +4,14 @@
   "description": "Integrating Babel into a Webpack build",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf bin",
+    "clean": "rm -rf build",
     "test": "open index.html",
     "webpack": "webpack --progress --colors",
   },
   "author": "Kyle Krull",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^1.13.2"
+    "path": "^0.12.7",
+    "webpack": "^1.13.2",
   }
 }

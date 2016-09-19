@@ -4,7 +4,7 @@
   "description": "Going through the Babel tutorial",
   "main": "index.js",
   "scripts": {
-    "build": "babel -d lib src/*",
+    "build": "babel -s -d lib src/*",
     "clean": "rm -rf lib",
     "test": "node lib/src/es2015.js"
   },

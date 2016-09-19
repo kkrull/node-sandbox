@@ -4,7 +4,9 @@
   "description": "Integrating Babel into a Webpack build",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf bin",
+    "test": "open index.html",
+    "webpack": "webpack --progress --colors",
   },
   "author": "Kyle Krull",
   "license": "ISC",

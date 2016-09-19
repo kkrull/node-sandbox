@@ -1,5 +1,5 @@
 {
-  "name": "babel-webpack",
+  "name": "webpack-babel",
   "version": "1.0.0",
   "description": "Integrating Babel into a Webpack build",
   "main": "index.js",

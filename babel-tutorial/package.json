@@ -1,0 +1,14 @@
+{
+  "name": "babel-tutorial",
+  "version": "1.0.0",
+  "description": "Going through the Babel tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kyle Krull",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.14.0"
+  }
+}

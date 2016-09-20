@@ -10,14 +10,15 @@ class State {
   }
 }
 
-function nextState({ count }, action) {
+function nextState(state, action) {
   switch(action.type) {
     case 'DEC':
-      return { count: count - 1 };
+      return new State(state.count - 1);
     case 'INC':
-      return { count: count + 1 };
+      return new State(state.count + 1);
     default:
-      return { count };
+      //Returning a new state for history, though not really a transition and no real user action has taken place
+      return new State(state.count);
   }
 }
 

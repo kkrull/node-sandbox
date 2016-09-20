@@ -1,0 +1,18 @@
+{
+  "name": "webpack-redux",
+  "version": "1.0.0",
+  "description": "Integrating Redux in ES6 into a webpack build with Babel",
+  "main": "index.js",
+  "scripts": {
+    "clean": "find build -iname '*.js' -exec rm {} +",
+    "test": "open build/index.html",
+    "webpack": "webpack --progress --colors",
+    "webpack:server": "webpack-dev-server --progress --colors --content-base build"
+  },
+  "author": "Kyle Krull",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  }
+}

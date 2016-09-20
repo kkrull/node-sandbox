@@ -5,7 +5,7 @@ function counter(state, action) {
 }
 
 const store = Redux.createStore(counter, 0);
-store.subscribe(() => console.log('Count: ' + store.getState()));
+store.subscribe(() => console.log(`Count: ${store.getState()}`));
 
 store.dispatch({ type: 'NOP' });
 

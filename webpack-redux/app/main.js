@@ -17,7 +17,7 @@ function nextState(state, action) {
     case 'INC':
       return new State(state.count + 1);
     default:
-      //Returning a new state for history, though not really a transition and no real user action has taken place
+      //Redux @@init action
       return new State(state.count);
   }
 }

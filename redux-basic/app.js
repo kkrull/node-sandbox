@@ -1,18 +1,18 @@
 const Redux = require('redux');
 
-function counter(state, action) {
+function counter({ count }, action) {
   switch(action.type) {
     case 'DEC':
-      return state - 1;
+      return { count: count - 1 };
     case 'INC':
-      return state + 1;
+      return { count: count + 1 };
     default:
-      return state;
+      return { count: count };
   }
 }
 
-const store = Redux.createStore(counter, 0);
-store.subscribe(() => console.log(`Count: ${store.getState()}`));
+const store = Redux.createStore(counter, { count: 0 });
+store.subscribe(() => console.log(`Count: ${store.getState().count}`));
 
 store.dispatch({ type: 'NOP' });
 store.dispatch({ type: 'INC' });

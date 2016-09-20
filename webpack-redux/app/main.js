@@ -10,7 +10,7 @@ class State {
   }
 }
 
-function counter({ count }, action) {
+function nextState({ count }, action) {
   switch(action.type) {
     case 'DEC':
       return { count: count - 1 };
@@ -21,8 +21,8 @@ function counter({ count }, action) {
   }
 }
 
-const store = createStore(counter, new State(0));
-var valueEl = document.getElementById('value');
+const store = createStore(nextState, new State(0));
+const valueEl = document.getElementById('value');
 function render() {
   valueEl.innerHTML = store.getState().count;
 }

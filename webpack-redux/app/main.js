@@ -30,13 +30,11 @@ function render() {
 render();
 store.subscribe(render);
 
-document.getElementById('increment')
-  .addEventListener('click', function () {
-    store.dispatch({ type: 'INC' })
-  });
+document
+  .getElementById('increment')
+  .addEventListener('click', () => store.dispatch({ type: 'INC' }));
 
-document.getElementById('decrement')
-  .addEventListener('click', function () {
-    store.dispatch({ type: 'DEC' })
-  });
+document
+  .getElementById('decrement')
+  .addEventListener('click', () => store.dispatch({ type: 'DEC' }));
 

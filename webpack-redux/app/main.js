@@ -31,11 +31,15 @@ function render() {
 render();
 store.subscribe(render);
 
+//Action creators - these must be plain objects with a type property
+const incrementAction = () => { return { type: 'INC' } };
+const decrementAction = () => { return { type: 'DEC' } };
+
 document
   .getElementById('increment')
-  .addEventListener('click', () => store.dispatch({ type: 'INC' }));
+  .addEventListener('click', () => store.dispatch(incrementAction()));
 
 document
   .getElementById('decrement')
-  .addEventListener('click', () => store.dispatch({ type: 'DEC' }));
+  .addEventListener('click', () => store.dispatch(decrementAction()));
 

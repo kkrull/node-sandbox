@@ -22,15 +22,21 @@ function counter({ count }, action) {
 }
 
 const store = createStore(counter, new State(0));
-store.subscribe(() => {
-  const state = store.getState();
-  const count = state.count;
-  console.log(`Count: ${count}`);
-  document.write(`Count: ${count}<br/>`);
-});
+var valueEl = document.getElementById('value');
+function render() {
+  valueEl.innerHTML = store.getState().count;
+}
 
-store.dispatch({ type: 'NOP' });
-store.dispatch({ type: 'INC' });
-store.dispatch({ type: 'DEC' });
+render();
+store.subscribe(render);
 
+document.getElementById('increment')
+  .addEventListener('click', function () {
+    store.dispatch({ type: 'INC' })
+  });
+
+document.getElementById('decrement')
+  .addEventListener('click', function () {
+    store.dispatch({ type: 'DEC' })
+  });
 

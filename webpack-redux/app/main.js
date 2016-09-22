@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 import { State, nextState } from './reducer';
+import { incrementAction, decrementAction } from './actions';
 
 const store = createStore(nextState, new State(0));
 const valueEl = document.getElementById('value');
@@ -9,10 +10,6 @@ function render() {
 
 render();
 store.subscribe(render);
-
-//Action creators - these must be plain objects with a type property
-const incrementAction = () => { return { type: 'INC' } };
-const decrementAction = () => { return { type: 'DEC' } };
 
 document
   .getElementById('increment')

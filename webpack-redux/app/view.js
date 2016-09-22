@@ -12,7 +12,6 @@ export class View {
       valueEl.innerHTML = store.getState().count;
     }
 
-    //render();
     store.subscribe(render);
     this._addListeners(store);
   }

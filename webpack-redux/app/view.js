@@ -12,9 +12,12 @@ export class View {
       valueEl.innerHTML = store.getState().count;
     }
 
-    render();
+    //render();
     store.subscribe(render);
+    this._addListeners(store);
+  }
 
+  _addListeners(store) {
     this.parentElement
       .getElementById('increment')
       .addEventListener('click', () => store.dispatch(incrementAction()));

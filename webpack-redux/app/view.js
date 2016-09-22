@@ -6,9 +6,8 @@ export class View {
   }
 
   subscribeTo(store) {
-    const self = this;
+    const valueEl = this.parentElement.getElementById('value');
     function render() {
-      const valueEl = self.parentElement.getElementById('value');
       valueEl.innerHTML = store.getState().count;
     }
 

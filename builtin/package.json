@@ -1,0 +1,14 @@
+{
+  "name": "builtin",
+  "version": "1.0.0",
+  "description": "How to use the built-in HTTP server from node.js",
+  "main": "node_http.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Kyle Krull",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^3.0.2"
+  }
+}

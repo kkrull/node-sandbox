@@ -3,5 +3,6 @@
 //While that's not ideal, it's at least not inconsistent.  Use sparingly.
 
 //global.expect = require('expect');
-//require('babel-register')();
+
+require('babel-register');
 

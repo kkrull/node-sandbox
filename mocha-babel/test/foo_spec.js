@@ -5,6 +5,9 @@ describe('#foo', function() {
     expect(foo).toExist();
     expect(foo).toBeA('function');
   });
+  it('can be called', function() {
+    foo();
+  });
 });
 
 

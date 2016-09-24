@@ -4,8 +4,8 @@
   "description": "Using Babel to transpile ES6 -> ES5 for Mocha",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "test:watch": "mocha --watch"
+    "test": "mocha --require test/helper.js test",
+    "test:watch": "mocha --watch --require test/helper.js test"
   },
   "author": "Kyle Krull",
   "license": "ISC",

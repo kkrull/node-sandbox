@@ -1,3 +1,4 @@
+import expect from 'expect';
 const Widget = require('../src/widget');
 
 describe('Widget', function() {

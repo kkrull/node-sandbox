@@ -1,8 +1,4 @@
-//I think this will become available even in the production modules.
-//If that's true, then mocha's functions like beforeEach are also available there.
-//While that's not ideal, it's at least not inconsistent.  Use sparingly.
-
-//global.expect = require('expect');
-
+//Mocha helper.  Call with `mocha --require test/helper.js <test file> ...`
+//Must be written in ES5.  Tests and production code can be in ES2015 by way of babel-register.
 require('babel-register');
 

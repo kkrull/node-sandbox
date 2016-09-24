@@ -1,3 +1,4 @@
+import expect from 'expect';
 const foo = require('../src/foo').foo;
 
 describe('#foo', function() {

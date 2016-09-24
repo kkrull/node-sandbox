@@ -10,6 +10,8 @@
   "author": "Kyle Krull",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
     "babel-register": "^6.14.0",
     "expect": "^1.20.2",
     "mocha": "^3.0.2"

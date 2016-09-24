@@ -1,1 +1,5 @@
-//syntactically empty
+export default class Greeter {
+  sayHello(name='World') {
+    return `Hello ${name}`;
+  }
+}

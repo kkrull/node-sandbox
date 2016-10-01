@@ -1,6 +1,5 @@
 import Greeter from '../../src/greeter';
-
-var expect = require('expect');
+import expect from 'expect';
 
 var stepWrapper = function() {
   this.Given(/^a greeter$/, function() {

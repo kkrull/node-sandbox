@@ -1,14 +1,7 @@
+var Greeter = require('../../src/greeter');
 var expect = require('expect');
 
 var stepWrapper = function() {
-  function Greeter() {
-    return {
-      sayHello: function() {
-        return 'Hello World';
-      }
-    };
-  }
-
   this.Given(/^a greeter$/, function() {
     this.greeter = new Greeter();
   });

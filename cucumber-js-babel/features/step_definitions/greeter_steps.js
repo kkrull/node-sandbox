@@ -1,4 +1,5 @@
-var Greeter = require('../../src/greeter');
+import Greeter from '../../src/greeter';
+
 var expect = require('expect');
 
 var stepWrapper = function() {

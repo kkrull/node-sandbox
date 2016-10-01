@@ -1,8 +1,5 @@
-function Greeter() {
+export default class Greeter {
+  sayHello() {
+    return 'Hello World';
+  }
 }
-
-Greeter.prototype.sayHello = function() {
-  return 'Hello World';
-};
-
-module.exports = Greeter;

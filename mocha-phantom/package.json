@@ -1,0 +1,20 @@
+{
+  "name": "mocha-phantom",
+  "version": "1.0.0",
+  "description": "Using Phantomjs with Mocha",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha-phantomjs TestRunner.html",
+    "test:browser": "open TestRunner.html"
+  },
+  "author": "Kyle Krull",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.0",
+    "mocha-phantomjs": "^4.1.0"
+  }
+}

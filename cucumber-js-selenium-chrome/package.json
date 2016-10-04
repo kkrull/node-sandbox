@@ -1,7 +1,7 @@
 {
-  "name": "cucumber-js-selenium",
+  "name": "cucumber-js-selenium-chrome",
   "version": "1.0.0",
-  "description": "Using Selenium with cucumber-js",
+  "description": "Using Selenium with cucumber-js to drive Chrome",
   "main": "index.js",
   "scripts": {
     "test": "cucumberjs"

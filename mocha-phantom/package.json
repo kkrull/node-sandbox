@@ -7,8 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha-phantomjs TestRunner.html",
-    "test:browser": "open TestRunner.html"
+    "test": "mocha-phantomjs test/TestRunner.html",
+    "test:browser": "open test/TestRunner.html"
   },
   "author": "Kyle Krull",
   "license": "ISC",

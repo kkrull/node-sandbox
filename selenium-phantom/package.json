@@ -1,0 +1,15 @@
+{
+  "name": "selenium-phantom",
+  "version": "1.0.0",
+  "description": "Just Selenium WebDriver with PhantomJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "node startPhantom.js"
+  },
+  "author": "Kyle Krull",
+  "license": "ISC",
+  "devDependencies": {
+    "phantomjs": "^2.1.7",
+    "selenium-webdriver": "^3.0.0-beta-3"
+  }
+}

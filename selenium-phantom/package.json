@@ -4,7 +4,8 @@
   "description": "Just Selenium WebDriver with PhantomJS",
   "main": "index.js",
   "scripts": {
-    "test": "node startPhantom.js"
+    "test": "node startPhantom.js",
+    "test:google": "node google.js"
   },
   "author": "Kyle Krull",
   "license": "ISC",

@@ -1,0 +1,15 @@
+{
+  "name": "selenium-chrome",
+  "version": "1.0.0",
+  "description": "Using Selenium webdriver to drive chrome",
+  "main": "index.js",
+  "scripts": {
+    "test": "node Wiki.js"
+  },
+  "author": "Kyle Krull",
+  "license": "ISC",
+  "devDependencies": {
+    "chromedriver": "^2.24.1",
+    "selenium-webdriver": "^3.0.0-beta-3"
+  }
+}

@@ -29,6 +29,7 @@ describe('web application', function() {
 
   context('testing rendering with selenium -> webdriver -> ghostdriver -> phantom', function() {
     it('loads phantomjs', function(done) {
+      expect('test').toEqual('to make sense');
       this.timeout(5000);
 
       //There's a nice example for later with [webdriverio](https://www.npmjs.com/package/phantomjs-prebuilt)

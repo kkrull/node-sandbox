@@ -4,7 +4,8 @@
   "description": "Using Selenium webdriver to drive chrome",
   "main": "index.js",
   "scripts": {
-    "test": "node Wiki.js"
+    "test": "node Wiki.js",
+    "test:screenshot": "node screenshot.js"
   },
   "author": "Kyle Krull",
   "license": "ISC",

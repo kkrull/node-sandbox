@@ -41,7 +41,10 @@ describe('Example application', function() {
       })
       .then(function() {
         console.log('CLOSING SERVER');
-        theServer.close();
+        return theServer.close();
+      })
+      .then(function() {
+        console.log('ENDING TEST');
         done();
       });
   });

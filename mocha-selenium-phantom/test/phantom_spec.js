@@ -26,14 +26,24 @@ describe('Example application', function() {
   });
 
   afterEach(function(done) {
+    var theBrowser = this.browser;
     var theServer = this.server;
 
-    console.log('CLOSING BROWSER');
-    this.browser.close().then(function() {
-      console.log('CLOSING SERVER');
-      theServer.close();
-      done();
-    });
+    console.log('TAKING SNAPSHOT');
+    this.browser.takeScreenshot()
+      .then(function(data) {
+        console.log('SAVING SNAPSHOT');
+        fs.writeFileSync('screenshot.png', data, 'base64')
+      })
+      .then(function() {
+        console.log('CLOSING BROWSER');
+        return theBrowser.close()
+      })
+      .then(function() {
+        console.log('CLOSING SERVER');
+        theServer.close();
+        done();
+      });
   });
 
   it('greets the user', function(done) {

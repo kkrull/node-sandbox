@@ -25,21 +25,28 @@ describe('Example application', function() {
     this.server = greeterApp().listen(3000);
   });
 
-  afterEach(function() {
-    this.server.close();
+  afterEach(function(done) {
+    var theServer = this.server;
+
+    console.log('CLOSING BROWSER');
+    this.browser.close().then(function() {
+      console.log('CLOSING SERVER');
+      theServer.close();
+      done();
+    });
   });
 
   it('greets the user', function(done) {
-    let browser = new webDriver.Builder()
+    this.browser = new webDriver.Builder()
       .usingServer()
       .withCapabilities({ 'browserName': 'phantomjs' })
       .build();
 
     console.log('OPENING PAGE');
-    browser.get('http://localhost:3000');
+    this.browser.get('http://localhost:3000');
 
     console.log('GETTING CONTENT');
-    browser.findElement(By.css('div'))
+    this.browser.findElement(By.css('div'))
       .then(function(element) {
         console.log('GETTING TEXT');
         return element.getText();

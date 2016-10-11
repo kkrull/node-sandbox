@@ -4,7 +4,9 @@
   "description": "Using Selenium webdriver to manage an external PhantomJS process for headless UI testing via Mocha",
   "main": "index.js",
   "scripts": {
-    "test": "node $NODE_DEBUG_OPTION screenshot.js"
+    "test": "mocha test",
+    "test:screenshot": "node $NODE_DEBUG_OPTION screenshot.js",
+    "test:watch": "mocha --watch test"
   },
   "author": "Kyle Krull",
   "license": "ISC",

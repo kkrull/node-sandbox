@@ -5,6 +5,10 @@ var webdriver = require('selenium-webdriver');
 var browser = new webdriver.Builder().usingServer().withCapabilities({'browserName': 'phantomjs' }).build();
 
 browser.manage().window().setSize(1280, 720);
+browser.manage().window().getSize().then(
+  function(size) {
+    console.log("Browser size: " + JSON.stringify(size));
+  });
 browser.get('http://en.wikipedia.org/wiki/Wiki');
 
 function writeScreenshot(data, name) {

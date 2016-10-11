@@ -1,5 +1,5 @@
 {
-  "name": "mocha-phantom",
+  "name": "mocha-phantom-html-runner",
   "version": "1.0.0",
   "description": "Using Phantomjs with Mocha through mocha-phantomjs, which requires an HTML test runner and has only that provision for script loading",
   "main": "index.js",

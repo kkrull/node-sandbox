@@ -12,6 +12,4 @@ describe('Express app', function() {
         .expect(200, done);
     });
   });
-
-  it('probably does something else cool, too.  Read more.');
 });

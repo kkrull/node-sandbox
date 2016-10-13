@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-set -e
 #set -x
+exit_code=0
 
 self_dir=$(readlink -f $(dirname $0))
 for file in $(git ls-files '*package.json')
@@ -11,5 +11,7 @@ do
 
   echo "== ${file} =="
   cd $package_dir
-  npm t
+  npm t || exit_code=1
 done
+
+exit $exit_code

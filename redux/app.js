@@ -31,4 +31,3 @@ store.subscribe(() => {
 store.dispatch({ type: 'NOP' });
 store.dispatch({ type: 'INC' });
 store.dispatch({ type: 'DEC' });
-

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clean": "find build -iname '*.js' -exec rm {} +",
-    "test": "open index.html",
+    "test": "webpack",
+    "view": "open index.html",
     "webpack": "webpack --progress --colors",
     "webpack:server": "webpack-dev-server --progress --colors --content-base build"
   },

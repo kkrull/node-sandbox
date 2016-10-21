@@ -1,19 +1,13 @@
+const makeServer = require('../app');
+
 const expect = require('expect');
-const express = require('express');
-const fs = require('fs');
 const webDriver = require('selenium-webdriver');
 const By = webDriver.By;
 
 describe('helloworld', function() {
-  function greeterApp() {
-    const app = express();
-    app.use(express.static(__dirname + '/..'));
-    return app;
-  }
-
   beforeEach(function() {
     this.timeout(15000);
-    this.server = greeterApp().listen(3000);
+    this.server = makeServer().listen(3000);
   });
 
   afterEach(function(done) {

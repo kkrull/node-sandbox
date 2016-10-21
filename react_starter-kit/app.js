@@ -1,5 +1,9 @@
 const express = require('express');
 
-const app = express();
-app.use(express.static(__dirname));
-app.listen(3000);
+function makeServer() {
+  const app = express();
+  app.use(express.static(__dirname));
+  return app;
+}
+
+module.exports = makeServer;

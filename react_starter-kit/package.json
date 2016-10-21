@@ -1,0 +1,20 @@
+{
+  "name": "react_starter-kit",
+  "version": "1.0.0",
+  "description": "Using as basic a version of React as possible",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Kyle Krull",
+  "license": "ISC",
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^3.1.2",
+    "phantomjs-prebuilt": "^2.1.13",
+    "selenium-webdriver": "^3.0.0-beta-3"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}

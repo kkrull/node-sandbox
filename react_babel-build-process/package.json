@@ -1,0 +1,22 @@
+{
+  "name": "react_babel-build-process",
+  "version": "1.0.0",
+  "description": "Using Babel to transpile React/ES2015 before attempting to load it in the browser",
+  "main": "app.js",
+  "scripts": {
+    "run": "node main.js",
+    "test": "mocha $NODE_DEBUG_OPTION"
+  },
+  "author": "Kyle Krull",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "react": "^15.3.2"
+  },
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^3.1.2",
+    "phantomjs-prebuilt": "^2.1.13",
+    "selenium-webdriver": "^3.0.0-beta-3"
+  }
+}

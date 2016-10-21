@@ -4,7 +4,7 @@
   "description": "Using as basic a version of React as possible",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha $NODE_DEBUG_OPTION"
   },
   "author": "Kyle Krull",
   "license": "ISC",

@@ -1,3 +1,4 @@
+import 'jsdom-global/register';
 import MyComponent from '../src/MyComponent';
 
 import React from 'react';

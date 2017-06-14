@@ -8,7 +8,7 @@ class MyComponent extends Component {
 	
   render() {
     return (
-      <div onclick={this.onClick}>Test</div>
+      <div onClick={this.onClick}>Test</div>
     );
   }
 }

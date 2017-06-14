@@ -2,3 +2,5 @@
 //Must be written in ES5.  Tests and production code can be in ES2015 by way of babel-register.
 require('babel-register')();
 require('jsdom-global/register');
+
+expect = require('chai').expect;

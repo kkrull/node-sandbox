@@ -1,17 +1,17 @@
 import MyComponent from '../src/MyComponent';
 
 import React from 'react';
-import {shallow} from 'enzyme';
+import { mount } from 'enzyme';
 
 class ComponentRenderer {
-  shallow() {
-    return shallow(<MyComponent/>);
+  mount() {
+    return mount(<MyComponent/>);
   }
 }
 
 describe('<MyComponent />', () => {
   it('renders', () => {
-    const wrapper = new ComponentRenderer().shallow();
+    const wrapper = new ComponentRenderer().mount();
     console.log(wrapper.debug());
     wrapper.find('div').simulate('click');
   });

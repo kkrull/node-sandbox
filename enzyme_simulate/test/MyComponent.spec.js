@@ -15,18 +15,26 @@ class ComponentRenderer {
 
 describe('<MyComponent />', () => {
   context('with shallow rendering', () => {
-    it('simulates click events', () => {
+    it('is OFF before clicking', () => {
       const wrapper = new ComponentRenderer().shallow();
-
+      expect(wrapper.html()).to.match(/OFF/);
+    });
+    it('is ON after clicking', () => {
+      const wrapper = new ComponentRenderer().shallow();
       wrapper.find('div').simulate('click');
-      //wrapper.simulate('click');
+      expect(wrapper.html()).to.match(/ON/);
     });
   });
 
   context('with full DOM rendering', () => {
-    it.skip('simulates click events', () => {
+    it('is OFF before clicking', () => {
+      const wrapper = new ComponentRenderer().mount();
+      expect(wrapper.html()).to.match(/OFF/);
+    });
+    it('is ON after clicking', () => {
       const wrapper = new ComponentRenderer().mount();
       wrapper.find('div').simulate('click');
+      expect(wrapper.html()).to.match(/ON/);
     });
   });
 });

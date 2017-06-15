@@ -9,9 +9,15 @@
   },
   "author": "Kyle Krull",
   "license": "ISC",
+  "peerDependencies": {
+    "react-tap-event-plugin": "^2.0.1"
+  },
+  "repository": "https://github.com/kkrull/node-sandbox",
   "dependencies": {
+    "material-ui": "^0.18.3",
     "react": "^15.6.0",
     "react-dom": "^15.6.0",
+    "react-tap-event-plugin": "^2.0.1",
     "react-test-renderer": "^15.5.4"
   },
   "devDependencies": {

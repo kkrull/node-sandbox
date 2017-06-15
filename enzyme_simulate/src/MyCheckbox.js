@@ -6,20 +6,28 @@ import React, { Component } from 'react';
 class MyCheckbox extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      checked: false
+    };
   }
 
   onCheck = () => {
-    console.log('CHECK');
+    //console.log('CHECK');
+    this.setState({ checked: true });
   };
 
   render() {
-    console.log('RENDER', this.state);
+    //console.log('RENDER', this.state);
 
     const muiTheme = getMuiTheme({});
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <Checkbox onCheck={this.onCheck} />
+        <div>
+          <Checkbox onCheck={this.onCheck}/>
+          <div className="checkbox__status">
+            { this.state.checked ? 'ON' : 'OFF' }
+          </div>
+        </div>
       </MuiThemeProvider>
     );
   }

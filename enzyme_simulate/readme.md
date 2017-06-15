@@ -33,16 +33,15 @@ the main issues getting in the way are:
 See `test/MyCheckbox.spec.js` for an example of how to get a `<Checkbox />` test working.  The solution involves:
 
 - Remember that the component needs to be wrapped up in a `<MuiThemeProvider />`, or it will complain (and fail to render).
-- Enzyme `shallow` rendering is fine.
-- `ShallowWrapper#find` the element you want and `ShallowWrapper#simulate` the event to it.
+- Enzyme full DOM rendering with `mount` is required, since you're ultimately targeting a real DOM element (not a React component).
+- `ReactWrapper#find` the element you want and `ReactWrapper#simulate` the event to it.
 
 
 The part that I want to remember (and the reason for writing this document) is _how_ I figured this out:
 
-- `mount` the component and `console.log(ShallowWrapper#debug)` it to see the DOM rendering
+- `mount` the component and `console.log(ReactWrapper#debug)` it to see the DOM rendering
 - Look for interesting looking event handlers like `onChange`, `onClick`, etc...
 - Try the element/event combinations you find until you find the one you want.
-- Once that's working, you can switch back to shallow rendering.
 
 The debug output will look something like this, where the part of interest is the `onChange` handler of the `<input>` element.
 

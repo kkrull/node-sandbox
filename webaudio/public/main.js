@@ -10,7 +10,7 @@ function main() {
 function doMain() {
   Promise.all([
     initAudioContext(),
-    fetchArrayBuffer('audio/sf2-prepare-yourself.wav')
+    fetchArrayBuffer('audio/sf2-new-challenger.wav')
   ]).then(([context, response]) => {
     return context.decodeAudioData(response)
       .then(buffer => playAudio(buffer, context));

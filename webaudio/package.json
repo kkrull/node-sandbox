@@ -2,7 +2,7 @@
   "name": "webaudio",
   "version": "0.0.1",
   "description": "Trying out the WebAudio API",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "mocha"
   },

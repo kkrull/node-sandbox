@@ -1,0 +1,14 @@
+{
+  "name": "webaudio",
+  "version": "0.0.1",
+  "description": "Trying out the WebAudio API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Kyle Krull",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

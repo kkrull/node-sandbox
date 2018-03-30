@@ -11,8 +11,10 @@ function doMain() {
   Promise.all([
     initAudioContext(),
     fetchArrayBuffer('audio/sf2-prepare-yourself.wav')
-  ]).then(([context, buffer]) => playAudio(buffer, context))
-    .catch(error => console.log('Failed to load or play audio', error));
+  ]).then(([context, response]) => {
+    return context.decodeAudioData(response)
+      .then(buffer => console.log(buffer));
+  }).catch(error => console.log('Failed to load or play audio', error));
 }
 
 function initAudioContext() {
@@ -27,15 +29,8 @@ function fetchArrayBuffer(url) {
   return new Promise((resolve, reject) => {
     superagent.get(url)
       .responseType('arraybuffer')
-      .end((error, response) => error && reject(error) || resolve(response))
+      .end((error, response) => error && reject(error) || resolve(response.xhr.response))
   });
-}
-
-function playAudio(buffer, context) {
-  console.log('context', context);
-  console.log('buffer', buffer);
-  // context.decodeAudioData(request.response, function(buffer) {
-  //   dogBarkingBuffer = buffer;
 }
 
 window.addEventListener('load', main, false);

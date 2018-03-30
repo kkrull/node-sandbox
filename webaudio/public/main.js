@@ -13,7 +13,7 @@ function doMain() {
     fetchArrayBuffer('audio/sf2-prepare-yourself.wav')
   ]).then(([context, response]) => {
     return context.decodeAudioData(response)
-      .then(buffer => console.log(buffer));
+      .then(buffer => playAudio(buffer, context));
   }).catch(error => console.log('Failed to load or play audio', error));
 }
 
@@ -31,6 +31,13 @@ function fetchArrayBuffer(url) {
       .responseType('arraybuffer')
       .end((error, response) => error && reject(error) || resolve(response.xhr.response))
   });
+}
+
+function playAudio(buffer, context) {
+  const source = context.createBufferSource();
+  source.buffer = buffer;
+  source.connect(context.destination);
+  source.start();
 }
 
 window.addEventListener('load', main, false);

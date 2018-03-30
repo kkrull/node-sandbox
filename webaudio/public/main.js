@@ -3,8 +3,10 @@ function main() {
 }
 
 function doMain(window) {
-  initAudioContext(window)
-    .then(context => loadAudio(context))
+  Promise.all([
+    initAudioContext(window),
+    fetchAudioBuffer('audio/sf2-prepare-yourself.wav')
+  ]).then(([context, buffer]) => playAudio(buffer, context));
 }
 
 function initAudioContext(window) {
@@ -16,8 +18,13 @@ function initAudioContext(window) {
   }
 }
 
-function loadAudio(context) {
-  console.log(context);
+function fetchAudioBuffer(url) {
+  return Promise.resolve('BUFFER');
+}
+
+function playAudio(buffer, context) {
+  console.log('context', context);
+  console.log('buffer', buffer);
 }
 
 window.addEventListener('load', main, false);

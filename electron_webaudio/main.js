@@ -6,10 +6,10 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
-function createWindow() {
-  win = new BrowserWindow({ width: 1280, height: 720 })
+function createWindow(pathToMainPage, dimensions) {
+  win = new BrowserWindow(dimensions)
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'renderer', 'index.html'),
+    pathname: pathToMainPage,
     protocol: 'file:',
     slashes: true
   }))
@@ -22,7 +22,10 @@ function createWindow() {
   })
 }
 
-app.on('ready', createWindow)
+app.on('ready', () => createWindow(
+  path.join(__dirname, 'renderer', 'index.html'),
+  { width: 1280, height: 720 }
+))
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.

@@ -7,18 +7,17 @@ const url = require('url')
 let win
 
 class WebAudioApp {
-  constructor(pathToMainPage, initialDimensions) {
+  constructor(pathToMainPage) {
     this.renderPath = pathToMainPage
-    this.initialDimensions = initialDimensions
   }
 
-  start(electronApp) {
-    electronApp.on('ready', () => this.createWindow())
+  start(electronApp, windowSize) {
+    electronApp.on('ready', () => this.createWindow(windowSize))
     electronApp.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the
       // dock icon is clicked and there are no other windows open.
       if(win === null) {
-        this.createWindow()
+        this.createWindow(windowSize)
       }
     })
 
@@ -29,8 +28,8 @@ class WebAudioApp {
     })
   }
 
-  createWindow() {
-    win = new BrowserWindow(this.initialDimensions)
+  createWindow(windowSize) {
+    win = new BrowserWindow(windowSize)
     win.loadURL(url.format({
       pathname: this.renderPath,
       protocol: 'file:',
@@ -49,4 +48,4 @@ class WebAudioApp {
 const theApp = new WebAudioApp(
   path.join(__dirname, 'renderer', 'index.html'),
   { width: 1280, height: 720 })
-theApp.start(app)
+theApp.start(app, { width: 1280, height: 720 })

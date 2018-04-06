@@ -2,21 +2,17 @@ const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let win
-
 class WebAudioApp {
-  constructor(pathToMainPage) {
-    this.renderPath = pathToMainPage
+  constructor(pathToViewFile) {
+    this.renderPath = pathToViewFile
+    this.win = null
   }
 
   start(electronApp, windowSize) {
     electronApp.on('ready', () => this.createWindow(windowSize))
     electronApp.on('activate', () => {
-      // On macOS it's common to re-create a window in the app when the
-      // dock icon is clicked and there are no other windows open.
-      if(win === null) {
+      //Recreate a window that was closed on macOS, while leaving the app open
+      if(this.win === null) {
         this.createWindow(windowSize)
       }
     })
@@ -29,23 +25,21 @@ class WebAudioApp {
   }
 
   createWindow(windowSize) {
-    win = new BrowserWindow(windowSize)
-    win.loadURL(url.format({
+    this.win = new BrowserWindow(windowSize)
+    this.win.loadURL(url.format({
       pathname: this.renderPath,
       protocol: 'file:',
       slashes: true
     }))
 
-    win.webContents.openDevTools()
+    this.win.webContents.openDevTools()
 
-    win.on('closed', () => {
+    this.win.on('closed', () => {
       //Allow garbage collection of the window
-      win = null
+      this.win = null
     })
   }
 }
 
-const theApp = new WebAudioApp(
-  path.join(__dirname, 'renderer', 'index.html'),
-  { width: 1280, height: 720 })
+const theApp = new WebAudioApp(path.join(__dirname, 'renderer', 'index.html'))
 theApp.start(app, { width: 1280, height: 720 })

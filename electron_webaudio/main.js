@@ -6,36 +6,47 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
-function createWindow(pathToMainPage, dimensions) {
-  win = new BrowserWindow(dimensions)
-  win.loadURL(url.format({
-    pathname: pathToMainPage,
-    protocol: 'file:',
-    slashes: true
-  }))
+class WebAudioApp {
+  constructor(pathToMainPage, initialDimensions) {
+    this.renderPath = pathToMainPage
+    this.initialDimensions = initialDimensions
+  }
 
-  win.webContents.openDevTools()
+  start(electronApp) {
+    electronApp.on('ready', () => this.createWindow())
+    electronApp.on('activate', () => {
+      // On macOS it's common to re-create a window in the app when the
+      // dock icon is clicked and there are no other windows open.
+      if(win === null) {
+        this.createWindow()
+      }
+    })
 
-  win.on('closed', () => {
-    //Allow garbage collection of the window
-    win = null
-  })
+    electronApp.on('window-all-closed', () => {
+      if(process.platform !== 'darwin') {
+        electronApp.quit()
+      }
+    })
+  }
+
+  createWindow() {
+    win = new BrowserWindow(this.initialDimensions)
+    win.loadURL(url.format({
+      pathname: this.renderPath,
+      protocol: 'file:',
+      slashes: true
+    }))
+
+    win.webContents.openDevTools()
+
+    win.on('closed', () => {
+      //Allow garbage collection of the window
+      win = null
+    })
+  }
 }
 
-app.on('ready', () => createWindow(
+const theApp = new WebAudioApp(
   path.join(__dirname, 'renderer', 'index.html'),
-  { width: 1280, height: 720 }
-))
-app.on('activate', () => {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if(win === null) {
-    createWindow()
-  }
-})
-
-app.on('window-all-closed', () => {
-  if(process.platform !== 'darwin') {
-    app.quit()
-  }
-})
+  { width: 1280, height: 720 })
+theApp.start(app)

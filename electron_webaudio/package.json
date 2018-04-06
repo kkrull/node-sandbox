@@ -4,6 +4,7 @@
   "description": "Using the WebAudio from Electron",
   "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "test": "mocha"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/kkrull/node-sandbox/issues"
   },
-  "homepage": "https://github.com/kkrull/node-sandbox#readme"
+  "homepage": "https://github.com/kkrull/node-sandbox#readme",
+  "devDependencies": {
+    "electron": "^1.8.4"
+  }
 }

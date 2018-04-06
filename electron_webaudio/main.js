@@ -1,10 +1,21 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
+const process = require('process')
 const url = require('url')
 
 class WebAudioApp {
-  constructor(pathToViewFile) {
-    this.renderPath = pathToViewFile
+  static forLocalFile(pathToViewFile) {
+    const loadUrl = url.format({
+      pathname: pathToViewFile,
+      protocol: 'file:',
+      slashes: true
+    })
+
+    return new WebAudioApp(loadUrl)
+  }
+
+  constructor(loadUrl) {
+    this.loadUrl = loadUrl
     this.win = null
   }
 
@@ -26,14 +37,8 @@ class WebAudioApp {
 
   createWindow(windowSize) {
     this.win = new BrowserWindow(windowSize)
-    this.win.loadURL(url.format({
-      pathname: this.renderPath,
-      protocol: 'file:',
-      slashes: true
-    }))
-
+    this.win.loadURL(this.loadUrl)
     this.win.webContents.openDevTools()
-
     this.win.on('closed', () => {
       //Allow garbage collection of the window
       this.win = null
@@ -41,5 +46,5 @@ class WebAudioApp {
   }
 }
 
-const theApp = new WebAudioApp(path.join(__dirname, 'renderer', 'index.html'))
+const theApp = WebAudioApp.forLocalFile(path.join(__dirname, 'renderer', 'index.html'))
 theApp.start(app, { width: 1280, height: 720 })

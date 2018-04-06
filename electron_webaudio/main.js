@@ -22,14 +22,13 @@ class WebAudioApp {
   start(electronApp, windowSize) {
     electronApp.on('ready', () => this.createWindow(windowSize))
     electronApp.on('activate', () => this.recreateWindowClosedOnMacOS(windowSize))
-
     electronApp.on('window-all-closed', () => {
       if(process.platform !== 'darwin') {
         electronApp.quit()
       }
     })
   }
-  
+
   recreateWindowClosedOnMacOS(windowSize) {
     if(this.window !== null) {
       return
@@ -42,10 +41,11 @@ class WebAudioApp {
     this.window = new BrowserWindow(windowSize)
     this.window.loadURL(this.loadUrl)
     this.window.webContents.openDevTools()
-    this.window.on('closed', () => {
-      //Allow garbage collection of the window
-      this.window = null
-    })
+    this.window.on('closed', () => this.allowWindowToBeGarbageCollected())
+  }
+
+  allowWindowToBeGarbageCollected() {
+    this.window = null
   }
 }
 

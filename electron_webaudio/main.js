@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron')
+const fs = require('fs')
 const path = require('path')
 const process = require('process')
 const url = require('url')
@@ -42,6 +43,12 @@ class WebAudioApp {
     this.window.loadURL(this.loadUrl)
     this.window.webContents.openDevTools()
     this.window.on('closed', () => this.allowWindowToBeGarbageCollected())
+
+    const audioPath = path.join(__dirname, 'audio', 'sf2-new-challenger.wav')
+    fs.readFile(audioPath, (err, data) => {
+      console.log(__filename, 'error?', err)
+      console.log(__filename, 'data', data && data.length)
+    })
   }
 
   allowWindowToBeGarbageCollected() {

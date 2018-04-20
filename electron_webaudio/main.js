@@ -35,7 +35,7 @@ class WebAudioApp {
         if(err) {
           event.sender.send('file:error', err)
         } else {
-          event.sender.send('file:contents', data)
+          event.sender.send('file:buffer', data)
         }
       })
     })

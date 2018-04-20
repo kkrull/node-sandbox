@@ -4,7 +4,7 @@ function main() {
   listLocalFiles().then(files => renderFileSelectors(files))
 
   const context = new AudioContext()
-  loadLocalFile('audio/sf2-new-challenger.wav')
+  loadLocalFile('sf2-new-challenger.wav')
     .then(nodeBuffer => context.decodeAudioData(nodeBuffer.buffer))
     .then(decoded => startPlayback(decoded, context))
     .catch(error => console.log('Failed to load or play audio', error))
@@ -13,7 +13,11 @@ function main() {
 /* Listing */
 
 function listLocalFiles() {
-  return Promise.resolve(['one', 'two'])
+  return new Promise((resolve, reject) => {
+    ipcRenderer.on('list-files:results', (_event, filenames) => resolve(filenames))
+    ipcRenderer.on('list-files:error', (_event, error) => reject(error))
+    ipcRenderer.send('list-files:request')
+  });
 }
 
 function renderFileSelectors(files) {

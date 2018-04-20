@@ -4,6 +4,8 @@ const path = require('path')
 const process = require('process')
 const url = require('url')
 
+const audioBasePath = path.join(__dirname, 'audio')
+
 class WebAudioApp {
   static forLocalFile(pathToViewFile) {
     const loadUrl = url.format({
@@ -22,6 +24,7 @@ class WebAudioApp {
 
   start(electronApp, windowSize) {
     this.initUIBehavior(electronApp, windowSize)
+    ipcMain.on('list-files:request', this.onListFiles)
     ipcMain.on('file:read', this.onFileRead)
   }
 
@@ -58,13 +61,23 @@ class WebAudioApp {
 
   /* Interaction with the renderer process */
 
-  onFileRead(event, pathRelativeToMain) {
-    const resolvedPath = path.join(__dirname, pathRelativeToMain)
+  onFileRead(event, pathInAudio) {
+    const resolvedPath = path.join(audioBasePath, pathInAudio)
     fs.readFile(resolvedPath, (error, data) => {
       if(error) {
         event.sender.send('file:error', error)
       } else {
         event.sender.send('file:buffer', data)
+      }
+    })
+  }
+
+  onListFiles(event) {
+    fs.readdir(audioBasePath, (error, files) => {
+      if(error) {
+        event.sender.send('list-files:error', error)
+      } else {
+        event.sender.send('list-files:results', files)
       }
     })
   }

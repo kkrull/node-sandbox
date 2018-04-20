@@ -21,23 +21,19 @@ class WebAudioApp {
   }
 
   start(electronApp, windowSize) {
+    this.initUIBehavior(electronApp, windowSize)
+    ipcMain.on('file:read', this.onFileRead)
+  }
+
+  /* Basic application behavior */
+
+  initUIBehavior(electronApp, windowSize) {
     electronApp.on('ready', () => this.createWindow(windowSize))
     electronApp.on('activate', () => this.recreateWindowClosedOnMacOS(windowSize))
     electronApp.on('window-all-closed', () => {
       if(process.platform !== 'darwin') {
         electronApp.quit()
       }
-    })
-
-    ipcMain.on('file:read', (event, filename) => {
-      const audioPath = path.join(__dirname, filename)
-      fs.readFile(audioPath, (err, data) => {
-        if(err) {
-          event.sender.send('file:error', err)
-        } else {
-          event.sender.send('file:buffer', data)
-        }
-      })
     })
   }
 
@@ -58,6 +54,19 @@ class WebAudioApp {
 
   allowWindowToBeGarbageCollected() {
     this.window = null
+  }
+
+  /* Interaction with the renderer process */
+
+  onFileRead(event, pathRelativeToMain) {
+    const resolvedPath = path.join(__dirname, pathRelativeToMain)
+    fs.readFile(resolvedPath, (error, data) => {
+      if(error) {
+        event.sender.send('file:error', error)
+      } else {
+        event.sender.send('file:buffer', data)
+      }
+    })
   }
 }
 

@@ -2,12 +2,6 @@ const { ipcRenderer } = require('electron')
 
 function main() {
   listLocalFiles().then(files => renderFileSelectors(files))
-
-  const context = new AudioContext()
-  loadLocalFile('sf2-new-challenger.wav')
-    .then(nodeBuffer => context.decodeAudioData(nodeBuffer.buffer))
-    .then(decoded => startPlayback(decoded, context))
-    .catch(error => console.log('Failed to load or play audio', error))
 }
 
 /* Listing */
@@ -33,6 +27,15 @@ function renderFileSelector(file) {
 }
 
 /* Playback */
+
+function loadAndPlay(filename) {
+  console.log('Starting playback:', filename)
+  const context = new AudioContext()
+  loadLocalFile(filename)
+    .then(nodeBuffer => context.decodeAudioData(nodeBuffer.buffer))
+    .then(decoded => startPlayback(decoded, context))
+    .catch(error => console.log('Failed to load or play audio', error))
+}
 
 function loadLocalFile(filename) {
   return new Promise((resolve, reject) => {

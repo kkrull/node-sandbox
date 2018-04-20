@@ -8,14 +8,39 @@
 <body>
 <h1>WebAudio in Electron Demo</h1>
 
-<h2>Available Files</h2>
-<div>
-  <ul class="file-list">
-  </ul>
+<div class="file-selector">
+  <p>
+    Enter the name of the file you wish to play
+  </p>
+  <input class="file-selector__requested" type="text" name="filename"/>
+  <button type="submit" onclick="onFileSelected()">Play File</button>
+</div>
+
+<div class="available-files">
+  <h2>Available Files</h2>
+  <div>
+    <ul class="file-list">
+    </ul>
+  </div>
 </div>
 
 <script type="text/javascript">
   require('./renderer-main')
+</script>
+
+<script type="text/javascript">
+  function onFileSelected() {
+    const selectedFileElements = document.getElementsByClassName('file-selector__requested')
+    switch(selectedFileElements.length) {
+      case 1:
+        const selectedFilename = selectedFileElements[0].value
+        loadAndPlay(selectedFilename)
+        return
+      default:
+        console.log(`onFileSelected: %d file(s) selected`, selectedFileElements.length)
+        return
+    }
+  }
 </script>
 </body>
 </html>

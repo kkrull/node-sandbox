@@ -2,7 +2,8 @@ const { ipcRenderer } = require('electron')
 
 function main() {
   listLocalFiles().then(files => renderFileSelectors(files))
-  document.getElementsByClassName('file-selector__submit')[0].addEventListener('click', onFileSelected)
+  document.getElementsByClassName('file-selector__submit')[0]
+    .addEventListener('click', onFileSelected)
 }
 
 /* Listing */
@@ -16,7 +17,7 @@ function listLocalFiles() {
 }
 
 function renderFileSelectors(files) {
-  const list = document.getElementsByClassName('file-list')[0]
+  const list = document.getElementsByClassName('available-files__list')[0]
   files.map(file => renderFileSelector(file))
     .forEach(selector => list.appendChild(selector))
 }
@@ -45,7 +46,6 @@ function onFileSelected() {
 /* Playback */
 
 function loadAndPlay(filename) {
-  console.log('Starting playback:', filename)
   const context = new AudioContext()
   loadLocalFile(filename)
     .then(nodeBuffer => context.decodeAudioData(nodeBuffer.buffer))

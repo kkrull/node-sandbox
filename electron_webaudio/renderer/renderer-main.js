@@ -2,6 +2,7 @@ const { ipcRenderer } = require('electron')
 
 function main() {
   listLocalFiles().then(files => renderFileSelectors(files))
+  document.getElementsByClassName('file-selector__submit')[0].addEventListener('click', onFileSelected)
 }
 
 /* Listing */
@@ -24,6 +25,21 @@ function renderFileSelector(file) {
   const fileItem = document.createElement('li')
   fileItem.appendChild(document.createTextNode(file))
   return fileItem
+}
+
+/* Selection */
+
+function onFileSelected() {
+  const selectedFileElements = document.getElementsByClassName('file-selector__requested')
+  switch(selectedFileElements.length) {
+    case 1:
+      const selectedFilename = selectedFileElements[0].value
+      loadAndPlay(selectedFilename)
+      return
+    default:
+      console.log(`onFileSelected: %d file(s) selected`, selectedFileElements.length)
+      return
+  }
 }
 
 /* Playback */

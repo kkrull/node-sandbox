@@ -13,7 +13,7 @@
     Enter the name of the file you wish to play
   </p>
   <input class="file-selector__requested" type="text" name="filename"/>
-  <button type="submit" onclick="onFileSelected()">Play File</button>
+  <button class="file-selector__submit" type="submit">Play File</button>
 </div>
 
 <div class="available-files">
@@ -29,18 +29,6 @@
 </script>
 
 <script type="text/javascript">
-  function onFileSelected() {
-    const selectedFileElements = document.getElementsByClassName('file-selector__requested')
-    switch(selectedFileElements.length) {
-      case 1:
-        const selectedFilename = selectedFileElements[0].value
-        loadAndPlay(selectedFilename)
-        return
-      default:
-        console.log(`onFileSelected: %d file(s) selected`, selectedFileElements.length)
-        return
-    }
-  }
 </script>
 </body>
 </html>

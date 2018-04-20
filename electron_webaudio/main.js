@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const fs = require('fs')
 const path = require('path')
 const process = require('process')
@@ -28,6 +28,17 @@ class WebAudioApp {
         electronApp.quit()
       }
     })
+
+    ipcMain.on('file:read', (event, filename) => {
+      const audioPath = path.join(__dirname, filename)
+      fs.readFile(audioPath, (err, data) => {
+        if(err) {
+          event.sender.send('file:error', err)
+        } else {
+          event.sender.send('file:contents', data)
+        }
+      })
+    })
   }
 
   recreateWindowClosedOnMacOS(windowSize) {
@@ -43,12 +54,6 @@ class WebAudioApp {
     this.window.loadURL(this.loadUrl)
     this.window.webContents.openDevTools()
     this.window.on('closed', () => this.allowWindowToBeGarbageCollected())
-
-    const audioPath = path.join(__dirname, 'audio', 'sf2-new-challenger.wav')
-    fs.readFile(audioPath, (err, data) => {
-      console.log(__filename, 'error?', err)
-      console.log(__filename, 'data', data && data.length)
-    })
   }
 
   allowWindowToBeGarbageCollected() {

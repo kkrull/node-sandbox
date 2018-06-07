@@ -7,14 +7,14 @@ import { By } from "@angular/platform-browser";
 class HeroesComponentStub {}
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(() => {
+    return TestBed.configureTestingModule({
       declarations: [
         AppComponent,
         HeroesComponentStub
       ],
     }).compileComponents();
-  }));
+  });
 
   describe('.title', () => {
     it('the property value is "Tour of Heroes"', () => {

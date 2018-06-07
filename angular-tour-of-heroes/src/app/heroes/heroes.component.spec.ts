@@ -11,8 +11,7 @@ describe('HeroesComponent', () => {
     TestBed.configureTestingModule({
       declarations: [HeroesComponent],
       imports: [FormsModule]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

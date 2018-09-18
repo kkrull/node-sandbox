@@ -47,6 +47,16 @@ function handleRequest(request, response) {
 
       response.write(body);
       response.end();
+
+    case '/health':
+      response.writeHead(200, {
+        'Content-Length': 2,
+        'Content-Type': 'text/plain'
+      });
+
+      response.write('ok');
+      response.end();
+
     default:
       response.writeHead(200);
       response.end('Hello Http');

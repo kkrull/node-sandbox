@@ -47,6 +47,7 @@ function handleRequest(request, response) {
 
       response.write(body);
       response.end();
+      return;
 
     case '/health':
       response.writeHead(200, {
@@ -56,10 +57,12 @@ function handleRequest(request, response) {
 
       response.write('ok');
       response.end();
+      return;
 
     default:
       response.writeHead(200);
       response.end('Hello Http');
+      return;
   }
 }
 

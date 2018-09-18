@@ -27,7 +27,7 @@ function parseArgs(argv) {
 function logRequest(request) {
   console.log(`> ${request.method} ${request.url}`);
   for(var i = 0; i < request.rawHeaders.length; i += 2) {
-    console.log(`  ${request.rawHeaders[i]}: ${request.rawHeaders[i+1]}`);
+    console.log(`  ${request.rawHeaders[i]}: ${request.rawHeaders[i + 1]}`);
   }
 }
 
@@ -35,11 +35,17 @@ function handleRequest(request, response) {
   const requestUrl = url.parse(request.url);
   switch(requestUrl.pathname) {
     case '/headers':
-      response.writeHead(200);
+      let body = '';
       for(var i = 0; i < request.rawHeaders.length; i += 2) {
-        response.write(`${request.rawHeaders[i]}: ${request.rawHeaders[i+1]}\n`);
+        body = body.concat(`${request.rawHeaders[i]}: ${request.rawHeaders[i + 1]}\n`);
       }
 
+      response.writeHead(200, {
+        'Content-Length': body.length,
+        'Content-Type': 'text/plain'
+      });
+
+      response.write(body);
       response.end();
     default:
       response.writeHead(200);

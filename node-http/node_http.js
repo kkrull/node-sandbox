@@ -35,35 +35,58 @@ function handleRequest(request, response) {
   const requestUrl = url.parse(request.url);
   switch(requestUrl.pathname) {
     case '/headers':
-      let body = '';
-      for(var i = 0; i < request.rawHeaders.length; i += 2) {
-        body = body.concat(`${request.rawHeaders[i]}: ${request.rawHeaders[i + 1]}\n`);
-      }
-
-      response.writeHead(200, {
-        'Content-Length': body.length,
-        'Content-Type': 'text/plain'
-      });
-
-      response.write(body);
-      response.end();
+      handleHeaders(request, response);
       return;
 
     case '/health':
-      response.writeHead(200, {
-        'Content-Length': 2,
-        'Content-Type': 'text/plain'
-      });
+      handleHealth(request, response);
+      return;
 
-      response.write('ok');
-      response.end();
+    case '/redirect':
+      handleRedirect(request, response);
       return;
 
     default:
-      response.writeHead(200);
-      response.end('Hello Http');
+      handleDefault(request, response);
       return;
   }
+}
+
+function handleDefault(request, response) {
+  response.writeHead(200);
+  response.end('Hello Http');
+}
+
+function handleHeaders(request, response) {
+  let body = '';
+  for(var i = 0; i < request.rawHeaders.length; i += 2) {
+    body = body.concat(`${request.rawHeaders[i]}: ${request.rawHeaders[i + 1]}\n`);
+  }
+
+  response.writeHead(200, {
+    'Content-Length': body.length,
+    'Content-Type': 'text/plain'
+  });
+
+  response.write(body);
+  response.end();
+}
+
+function handleHealth(request, response) {
+  response.writeHead(200, {
+    'Content-Length': 2,
+    'Content-Type': 'text/plain'
+  });
+
+  response.write('ok');
+  response.end();
+}
+
+function handleRedirect(request, response) {
+  response.writeHead(302, {
+    'Location': 'http://www.google.com'
+  });
+  response.end();
 }
 
 main(process.argv);

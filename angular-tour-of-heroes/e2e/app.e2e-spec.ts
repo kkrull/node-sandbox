@@ -9,6 +9,6 @@ describe('Main page', () => {
 
   it('should display a title', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Tour of Heroes');
+    expect(page.readTitle()).toEqual('Tour of Heroes');
   });
 });

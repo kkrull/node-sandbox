@@ -1,17 +1,17 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { Component } from "@angular/core";
-import { By } from "@angular/platform-browser";
+import { Component } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 @Component({ selector: 'app-heroes', template: '' })
-class HeroesComponentStub {}
+class HeroesStubComponent {}
 
 describe('AppComponent', () => {
   let app: ComponentFixture<AppComponent>;
 
   beforeEach(() => {
     return TestBed.configureTestingModule({
-      declarations: [AppComponent, HeroesComponentStub],
+      declarations: [AppComponent, HeroesStubComponent],
     }).compileComponents()
       .then(() => { app = TestBed.createComponent(AppComponent); });
   });
@@ -30,7 +30,7 @@ describe('AppComponent', () => {
 
   it('renders a HeroesComponent', () => {
     app.detectChanges();
-    const heroesComponent = app.debugElement.query(By.directive(HeroesComponentStub));
+    const heroesComponent = app.debugElement.query(By.directive(HeroesStubComponent));
     expect(heroesComponent).not.toBeNull('HeroesComponent');
   });
 });

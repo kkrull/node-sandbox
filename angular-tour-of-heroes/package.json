@@ -1,7 +1,7 @@
 {
-  "name": "angular-hello",
-  "version": "0.0.0",
   "license": "MIT",
+  "name": "angular-hello",
+  "private": true,
   "scripts": {
     "build": "ng build --prod",
     "e2e": "ng e2e",
@@ -11,7 +11,7 @@
     "start:dist": "http-server ./dist",
     "test": "ng test"
   },
-  "private": true,
+  "version": "0.0.0",
   "dependencies": {
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",

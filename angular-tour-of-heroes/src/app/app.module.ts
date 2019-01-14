@@ -11,6 +11,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 
 const appRoutes: Routes = [
   { path: 'heroes', component: HeroListComponent },
+  { path: 'redirect',   redirectTo: '/heroes', pathMatch: 'full' },
   { path: '',   redirectTo: '/heroes', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

@@ -1,23 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
-import { GuardedComponent } from './guarded/guarded.component';
-import { TutorialComponent } from './tutorial/tutorial.component';
-
-const routes: Routes = [
-  {
-    path: 'guarded',
-    component: GuardedComponent
-  },
-  {
-    path: 'tutorial',
-    component: TutorialComponent
-  }
-];
+import { APP_ROUTES } from './app.routes';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(APP_ROUTES)
   ],
   exports: [RouterModule]
 })

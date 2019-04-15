@@ -7,14 +7,14 @@ import { GuardedComponent } from './guarded/guarded.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
 @NgModule({
+  imports: [
+    AppRoutingModule,
+    BrowserModule
+  ],
   declarations: [
     AppComponent,
     GuardedComponent,
     TutorialComponent
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

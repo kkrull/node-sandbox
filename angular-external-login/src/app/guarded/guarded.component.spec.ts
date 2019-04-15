@@ -8,9 +8,10 @@ describe('GuardedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [GuardedComponent]
-    })
-      .compileComponents();
+      declarations: [
+        GuardedComponent
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

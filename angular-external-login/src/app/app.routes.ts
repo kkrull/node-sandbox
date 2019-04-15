@@ -7,7 +7,7 @@ import { ExternalUrlResolverToken } from './login/services/tokens';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
 const loginRouteData: ExternalUrlRouteData = {
-  targetUrl: 'http://www.google.com'
+  targetUrl: new URL('http://www.google.com')
 };
 
 export const APP_ROUTES: Routes = [

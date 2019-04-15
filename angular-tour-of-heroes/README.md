@@ -33,6 +33,11 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+Protractor tests can also be run in WebStorm with an already-running web server:
+
+- Start serving the web application with `ng serve` (or `npm start`).
+- Run the Protractor test in WebStorm like you would for any other spec.  It will connect to the default port, automatically.
+
 
 ## Further help
 

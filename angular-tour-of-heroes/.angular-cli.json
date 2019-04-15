@@ -1,34 +1,35 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "project": {
-    "name": "angular-tour-of-heroes"
-  },
   "apps": [
     {
-      "root": "src",
-      "outDir": "dist",
       "assets": [
         "assets",
         "favicon.ico"
       ],
-      "index": "index.html",
-      "main": "main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
-      "styles": [
-        "styles.css"
-      ],
-      "scripts": [],
-      "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
-      }
+      },
+      "environmentSource": "environments/environment.ts",
+      "index": "index.html",
+      "main": "main.ts",
+      "root": "src",
+      "outDir": "dist",
+      "prefix": "app",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "testTsconfig": "tsconfig.spec.json",
+      "tsconfig": "tsconfig.app.json",
+      "scripts": [],
+      "styles": [
+        "styles.css"
+      ]
     }
   ],
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  },
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
@@ -40,21 +41,20 @@
       "exclude": "**/node_modules/**"
     },
     {
-      "project": "src/tsconfig.spec.json",
+      "project": "e2e/tsconfig.e2e.json",
       "exclude": "**/node_modules/**"
     },
     {
-      "project": "e2e/tsconfig.e2e.json",
+      "project": "src/tsconfig.spec.json",
       "exclude": "**/node_modules/**"
     }
   ],
+  "project": {
+    "name": "angular-tour-of-heroes"
+  },
   "test": {
     "karma": {
       "config": "./karma.conf.js"
     }
-  },
-  "defaults": {
-    "styleExt": "css",
-    "component": {}
   }
 }

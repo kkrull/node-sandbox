@@ -1,7 +1,16 @@
-.header {
+header {
   text-align: center;
 }
 
 .header__logo {
-  width: 300px;
+  width: 200px;
+}
+
+nav {
+  border-bottom: 1px black solid;
+  border-top: 1px black solid;
+}
+
+.nav__link {
+  display: block;
 }

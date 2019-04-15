@@ -5,7 +5,7 @@ export class ChangeToExternalUrl implements Resolve<void> {
     console.log('route', route);
     return Promise.resolve('http://www.google.com')
       .then(url => {
-        // window.location.href = url;
+        window.location.href = url;
       });
   }
 }

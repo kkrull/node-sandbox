@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { ExternalUrlResolverToken } from './external-url-resolver.token';
+import { ExternalUrlResolverToken } from './login/services/external-url-resolver.token';
 import { GuardedComponent } from './guarded/guarded.component';
 import { LoginComponent } from './login/login.component';
 import { TutorialComponent } from './tutorial/tutorial.component';

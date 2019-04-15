@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { APP_ROUTES } from './app.routes';
 import { ChangeToExternalUrl } from './login/services/change-to-external-url.resolve';
-import { ExternalUrlResolverToken } from './login/services/external-url-resolver.token';
+import { ExternalUrlResolverToken } from './login/services/tokens';
 
 @NgModule({
   imports: [

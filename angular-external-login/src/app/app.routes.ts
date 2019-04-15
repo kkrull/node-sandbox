@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { ExternalUrlResolverToken } from './login/services/external-url-resolver.token';
 import { GuardedComponent } from './guarded/guarded.component';
 import { LoginComponent } from './login/login.component';
+import { ExternalUrlResolverToken } from './login/services/tokens';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
 export const APP_ROUTES: Routes = [

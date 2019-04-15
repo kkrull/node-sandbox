@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { APP_ROUTES } from './app.routes';
+import { ExternalUrlResolve } from './external-url.resolve';
+import { ExternalUrlResolveToken } from './external-url-resolve.token';
 
 @NgModule({
   imports: [
@@ -9,10 +11,8 @@ import { APP_ROUTES } from './app.routes';
   ],
   providers: [
     {
-      provide: 'externalUrlRedirectResolver',
-      useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-        window.location.href = 'http://www.google.com';
-      }
+      provide: ExternalUrlResolveToken,
+      useClass: ExternalUrlResolve
     }
   ],
   exports: [RouterModule]

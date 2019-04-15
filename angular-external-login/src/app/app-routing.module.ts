@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { APP_ROUTES } from './app.routes';
-import { ExternalUrlResolve } from './external-url.resolve';
-import { ExternalUrlResolveToken } from './external-url-resolve.token';
+import { ChangeToExternalUrl } from './change-to-external-url.resolve';
+import { ExternalUrlResolverToken } from './external-url-resolver.token';
 
 @NgModule({
   imports: [
@@ -11,8 +11,8 @@ import { ExternalUrlResolveToken } from './external-url-resolve.token';
   ],
   providers: [
     {
-      provide: ExternalUrlResolveToken,
-      useClass: ExternalUrlResolve
+      provide: ExternalUrlResolverToken,
+      useClass: ChangeToExternalUrl
     }
   ],
   exports: [RouterModule]

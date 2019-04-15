@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { ExternalUrlResolverToken } from './external-url-resolver.token';
 import { GuardedComponent } from './guarded/guarded.component';
-import { ExternalUrlResolveToken } from './external-url-resolve.token';
 import { LoginComponent } from './login/login.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
@@ -14,7 +14,7 @@ export const APP_ROUTES: Routes = [
     path: 'login',
     component: LoginComponent,
     resolve: {
-      url: ExternalUrlResolveToken
+      _unused: ExternalUrlResolverToken
     }
   },
   {

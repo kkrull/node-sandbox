@@ -9,6 +9,6 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    window.location.href = 'http://www.google.com';
+    // window.location.href = 'http://www.google.com';
   }
 }

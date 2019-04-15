@@ -11,7 +11,10 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    resolve: {
+      url: 'externalUrlRedirectResolver'
+    }
   },
   {
     path: 'tutorial',

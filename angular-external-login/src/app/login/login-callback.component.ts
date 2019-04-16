@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { map, tap } from 'rxjs/operators';
 
-import { ReadWriteStorage } from './services/token-storage.service';
+import { ReadWriteStorage } from '../shared/services/storage/read-write-storage.service';
 
 interface Tokens {
   accessToken: string;

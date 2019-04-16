@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
 
-import { ReadWriteStorage } from '../login/services/token-storage.service';
+import { ReadWriteStorage } from '../shared/services/storage/read-write-storage.service';
 
 @Component({
   selector: 'app-guarded',

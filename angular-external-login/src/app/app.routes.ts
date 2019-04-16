@@ -3,7 +3,7 @@ import { of } from 'rxjs/observable/of';
 
 import { GuardedComponent } from './guarded/guarded.component';
 import { LoginComponent } from './login/login.component';
-import { ExternalUrlRouteData } from './login/services/change-to-external-url.resolve';
+import { ExternalUrlRouteData } from './login/services/change-to-sign-in-url.resolve';
 import { ExternalUrlResolverToken } from './login/services/tokens';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { LoginCallbackComponent } from './login/login-callback.component';

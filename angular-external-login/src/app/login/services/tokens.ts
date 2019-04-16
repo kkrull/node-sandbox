@@ -1,4 +1,4 @@
 import { InjectionToken } from '@angular/core';
-import { ChangeToExternalUrl } from './change-to-external-url.resolve';
+import { ChangeToExternalSignInUrl } from './change-to-sign-in-url.resolve';
 
-export const ExternalUrlResolverToken = new InjectionToken<ChangeToExternalUrl>('ChangeToExternalUrl');
+export const ExternalUrlResolverToken = new InjectionToken<ChangeToExternalSignInUrl>('ChangeToExternalUrl');

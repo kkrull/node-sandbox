@@ -1,11 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, InjectionToken } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators';
-
-export interface ExternalUrlRouteData {
-  targetUrl(): Observable<URL>;
-}
 
 export abstract class OpenIdConnectService {
   abstract authorizationUrl(): Observable<URL>;
@@ -25,3 +21,5 @@ export class ChangeToExternalSignInUrl implements Resolve<URL> {
     );
   }
 }
+
+export const ChangeToExternalSignInUrlToken = new InjectionToken<ChangeToExternalSignInUrl>('ChangeToExternalUrl');

@@ -10,7 +10,7 @@ import { GuardedComponent } from './guarded/guarded.component';
 import { LoginComponent } from './login/login.component';
 import { LoginCallbackComponent } from './login/login-callback.component';
 import { ChangeToExternalSignInUrl, OpenIdConnectService } from './login/services/change-to-sign-in-url.resolve';
-import { ExternalUrlResolverToken } from './login/services/tokens';
+import { ChangeToExternalSignInUrlToken } from './login/services/change-to-sign-in-url.resolve';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { TutorialComponent } from './tutorial/tutorial.component';
     TutorialComponent
   ],
   providers: [
-    { provide: ExternalUrlResolverToken, useClass: ChangeToExternalSignInUrl },
+    { provide: ChangeToExternalSignInUrlToken, useClass: ChangeToExternalSignInUrl },
     { provide: OpenIdConnectService, useClass: CognitoOpenIdConnectService },
     { provide: ReadWriteStorage, useValue: localStorage },
   ],

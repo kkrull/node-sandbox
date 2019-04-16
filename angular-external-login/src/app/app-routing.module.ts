@@ -7,6 +7,7 @@ import { GuardedComponent } from './guarded/guarded.component';
 import { LoginComponent } from './login/login.component';
 import { LoginCallbackComponent } from './login/login-callback.component';
 import { ChangeToExternalUrl } from './login/services/change-to-external-url.resolve';
+import { ReadWriteStorage } from './login/services/token-storage.service';
 import { ExternalUrlResolverToken } from './login/services/tokens';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
@@ -22,10 +23,8 @@ import { TutorialComponent } from './tutorial/tutorial.component';
     TutorialComponent
   ],
   providers: [
-    {
-      provide: ExternalUrlResolverToken,
-      useClass: ChangeToExternalUrl
-    }
+    { provide: ExternalUrlResolverToken, useClass: ChangeToExternalUrl },
+    { provide: ReadWriteStorage, useValue: localStorage },
   ],
   exports: [RouterModule]
 })

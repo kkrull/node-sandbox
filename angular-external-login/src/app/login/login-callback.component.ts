@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+
+import { ReadWriteStorage } from './services/token-storage.service';
 
 interface Tokens {
   accessToken: string;
@@ -19,7 +21,7 @@ export class LoginCallbackComponent implements OnInit {
   urlFragment$: Observable<string>;
   tokensAsJson$: Observable<string>;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private storage: ReadWriteStorage) {
     this.urlFragment$ = activatedRoute.fragment;
 
     this.tokensAsJson$ = activatedRoute.fragment.pipe(
@@ -31,6 +33,10 @@ export class LoginCallbackComponent implements OnInit {
           idToken: params.get('id_token'),
           type: params.get('token_type'),
         };
+      }),
+      tap((tokens: Tokens) => {
+        this.storage.setItem('CognitoAccessToken', tokens.accessToken);
+        this.storage.setItem('CognitoIdToken', tokens.idToken);
       }),
       map((tokens: Tokens) => JSON.stringify(tokens, null, 2))
     );

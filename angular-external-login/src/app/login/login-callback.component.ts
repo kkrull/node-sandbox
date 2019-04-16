@@ -43,11 +43,6 @@ export class LoginCallbackComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const location: Location = window.location;
-    const urlWithoutFragment = location.toString().replace(/#.*/, '');
-    console.log('location', location);
-    console.log('without fragment', urlWithoutFragment);
-
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/guarded');
   }
 }

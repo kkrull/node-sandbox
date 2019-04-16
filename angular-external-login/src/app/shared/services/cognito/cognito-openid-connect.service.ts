@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
 import { OpenIdConnectService } from '../../../login/services/change-to-sign-in-url.resolve';
+
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 interface ImplicitAppClientConfig {
   clientId: string;
@@ -12,12 +15,18 @@ interface IdentityProviderConfig {
   appClient: ImplicitAppClientConfig;
 }
 
+interface OpenIdConnectConfigResponse {
+  authorization_endpoint: string;
+}
+
+@Injectable()
 export class CognitoOpenIdConnectService extends OpenIdConnectService {
   private config: IdentityProviderConfig;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     super();
 
+    // TODO KDK: Move to environment
     this.config = {
       baseUrl: new URL('https://cognito-idp.us-east-1.amazonaws.com/us-east-1_N8OfbsdVa'),
       appClient: {
@@ -27,10 +36,9 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
   }
 
   authorizationUrl(): Observable<URL> {
-    return of(this.configUrl()).pipe(
-      map(configUrl => this.authorizationEndpoint(configUrl)),
+    return this.getDiscoveryDocument(this.configUrl()).pipe(
+      map(idpConfig => idpConfig.authorization_endpoint),
       map(authEndpointUrl => this.authorizeThisApp(authEndpointUrl)),
-      tap(x => console.log('authorization url', x.href))
     );
   }
 
@@ -40,12 +48,17 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
     return configUrl;
   }
 
-  private authorizationEndpoint(configUrl: URL): URL {
-    return new URL('https://skydevelopers.auth.us-east-1.amazoncognito.com/oauth2/authorize');
+  private getDiscoveryDocument(configUrl: URL) {
+    return this.http.get(configUrl.href, {
+      observe: 'body',
+      responseType: 'json'
+    }).pipe(
+      map(response => response as OpenIdConnectConfigResponse)
+    );
   }
 
-  private authorizeThisApp(authorizationEndpoint: URL): URL {
-    const authorizationUrl = new URL(authorizationEndpoint.href);
+  private authorizeThisApp(authorizationEndpoint: string): URL {
+    const authorizationUrl = new URL(authorizationEndpoint);
     authorizationUrl.searchParams.append('client_id', this.config.appClient.clientId);
     authorizationUrl.searchParams.append('redirect_uri', 'http://localhost:4200/callback');
     authorizationUrl.searchParams.append('response_type', 'token');

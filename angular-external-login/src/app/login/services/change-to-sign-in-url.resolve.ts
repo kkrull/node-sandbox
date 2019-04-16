@@ -13,7 +13,6 @@ export class ChangeToExternalSignInUrl implements Resolve<URL> {
   constructor(private identityProviderService: OpenIdConnectService) { }
 
   resolve(_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<URL> {
-    // const routeData = route.data as ExternalUrlRouteData;
     return this.identityProviderService.authorizationUrl().pipe(
       tap((targetUrl: URL) => {
         window.location.href = targetUrl.href;

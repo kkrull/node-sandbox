@@ -5,9 +5,7 @@ import { TutorialComponent } from './tutorial.component';
 describe('TutorialComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TutorialComponent
-      ],
+      declarations: [TutorialComponent],
     }).compileComponents();
   }));
 

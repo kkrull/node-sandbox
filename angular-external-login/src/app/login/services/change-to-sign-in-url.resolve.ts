@@ -7,7 +7,7 @@ export abstract class OpenIdConnectService {
   abstract authorizationUrl(): Observable<URL>;
 }
 
-// Resolves to nothing, but has a handy side-effect of changing completely out of this app and to another URL
+// Resolves to nothing, but has a handy side-effect of changing completely out of this app, to another URL
 @Injectable()
 export class ChangeToExternalSignInUrl implements Resolve<URL> {
   constructor(private identityProviderService: OpenIdConnectService) { }

@@ -29,7 +29,7 @@ export class LoginCallbackComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.router.navigateByUrl('/guarded');
+    this.routeToGuardedPage();
   }
 
   ngOnDestroy(): void {
@@ -49,5 +49,9 @@ export class LoginCallbackComponent implements OnInit, OnDestroy {
   private storeTokens(tokens: Tokens) {
     this.storage.setItem('CognitoAccessToken', tokens.accessToken);
     this.storage.setItem('CognitoIdToken', tokens.idToken);
+  }
+
+  private routeToGuardedPage() {
+    this.router.navigateByUrl('/guarded');
   }
 }

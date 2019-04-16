@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
@@ -15,7 +15,7 @@ interface Tokens {
   templateUrl: './login-callback.component.html',
   styleUrls: ['./login-callback.component.css']
 })
-export class LoginCallbackComponent {
+export class LoginCallbackComponent implements OnInit {
   urlFragment$: Observable<string>;
   tokensAsJson$: Observable<string>;
 
@@ -32,7 +32,11 @@ export class LoginCallbackComponent {
           type: params.get('token_type'),
         };
       }),
-      map(tokens => JSON.stringify(tokens, null, 2))
+      map((tokens: Tokens) => JSON.stringify(tokens, null, 2))
     );
+  }
+
+  ngOnInit(): void {
+    console.log('location', window.location.href);
   }
 }

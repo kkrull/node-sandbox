@@ -1,13 +1,13 @@
 <h1>Login Callback</h1>
 
 <div>
-  <h2>Fragment</h2>
-  {{(urlFragment$ | async)}}
-</div>
-
-<div>
-  <h2>Parsed</h2>
+  <h2>Parsed Tokens</h2>
   <div *ngIf="tokensAsJson$ | async as tokens">
     <pre>{{tokens}}</pre>
   </div>
+</div>
+
+<div>
+  <h2>Raw URL Fragment</h2>
+  {{(urlFragment$ | async)}}
 </div>

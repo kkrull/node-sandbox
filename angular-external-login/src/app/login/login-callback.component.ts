@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
@@ -19,10 +19,10 @@ export class LoginCallbackComponent implements OnInit {
   urlFragment$: Observable<string>;
   tokensAsJson$: Observable<string>;
 
-  constructor(private route: ActivatedRoute) {
-    this.urlFragment$ = route.fragment;
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    this.urlFragment$ = activatedRoute.fragment;
 
-    this.tokensAsJson$ = route.fragment.pipe(
+    this.tokensAsJson$ = activatedRoute.fragment.pipe(
       map(fragment => {
         const params = new URLSearchParams(fragment);
         return {
@@ -37,6 +37,11 @@ export class LoginCallbackComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('location', window.location.href);
+    const location: Location = window.location;
+    const urlWithoutFragment = location.toString().replace(/#.*/, '');
+    console.log('location', location);
+    console.log('without fragment', urlWithoutFragment);
+
+    this.router.navigateByUrl('/');
   }
 }

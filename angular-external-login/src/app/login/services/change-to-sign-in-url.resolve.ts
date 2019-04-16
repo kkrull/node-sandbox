@@ -22,4 +22,4 @@ export class ChangeToExternalSignInUrl implements Resolve<URL> {
   }
 }
 
-export const ChangeToExternalSignInUrlToken = new InjectionToken<ChangeToExternalSignInUrl>('ChangeToExternalUrl');
+export const ChangeToExternalSignInUrlToken = new InjectionToken<ChangeToExternalSignInUrl>('ChangeToExternalSignInUrl');

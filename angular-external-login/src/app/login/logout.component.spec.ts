@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { ReadWriteStorage } from '../shared/services/storage/read-write-storage.service';
 
-import { LoginCallbackComponent } from './login-callback.component';
+import { LogoutComponent } from './logout.component';
 
 @Component({
   selector: 'app-stub-component',
@@ -12,21 +12,21 @@ import { LoginCallbackComponent } from './login-callback.component';
 })
 class StubComponent {}
 
-describe('LoginCallbackComponent', () => {
-  let component: LoginCallbackComponent;
-  let fixture: ComponentFixture<LoginCallbackComponent>;
+describe('LogoutComponent', () => {
+  let component: LogoutComponent;
+  let fixture: ComponentFixture<LogoutComponent>;
   let storage: jasmine.SpyObj<ReadWriteStorage>;
 
   beforeEach(async(() => {
-    storage = jasmine.createSpyObj('ReadWriteStorage', ['getItem', 'setItem']);
+    storage = jasmine.createSpyObj('ReadWriteStorage', ['getItem', 'removeItem', 'setItem']);
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule.withRoutes([
-          { path: 'guarded', component: StubComponent }
+          { path: '', component: StubComponent }
         ])
       ],
       declarations: [
-        LoginCallbackComponent,
+        LogoutComponent,
         StubComponent
       ],
       providers: [
@@ -36,7 +36,7 @@ describe('LoginCallbackComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginCallbackComponent);
+    fixture = TestBed.createComponent(LogoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -9,8 +9,12 @@ import { APP_ROUTES } from './app.routes';
 import { GuardedComponent } from './guarded/guarded.component';
 import { LoginComponent } from './login/login.component';
 import { LoginCallbackComponent } from './login/login-callback.component';
-import { ChangeToExternalSignInUrl, OpenIdConnectService } from './login/services/change-to-sign-in-url.resolve';
-import { ChangeToExternalSignInUrlToken } from './login/services/change-to-sign-in-url.resolve';
+import { LogoutComponent } from './login/logout.component';
+import {
+  ChangeToExternalSignInUrl,
+  ChangeToExternalSignInUrlToken,
+  OpenIdConnectService
+} from './login/services/change-to-sign-in-url.resolve';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
 @NgModule({
@@ -22,6 +26,7 @@ import { TutorialComponent } from './tutorial/tutorial.component';
     GuardedComponent,
     LoginCallbackComponent,
     LoginComponent,
+    LogoutComponent,
     TutorialComponent
   ],
   providers: [

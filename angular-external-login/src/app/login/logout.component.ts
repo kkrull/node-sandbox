@@ -12,9 +12,16 @@ export class LogoutComponent implements OnInit {
   constructor(private router: Router, private storage: ReadWriteStorage) { }
 
   ngOnInit() {
+    this.removeStoredTokens();
+    this.routeToHomePage();
+  }
+
+  private removeStoredTokens() {
     this.storage.removeItem('CognitoAccessToken');
     this.storage.removeItem('CognitoIdToken');
+  }
 
+  private routeToHomePage() {
     this.router.navigateByUrl('/');
   }
 }

@@ -25,24 +25,28 @@ export class LoginCallbackComponent implements OnInit {
     this.urlFragment$ = activatedRoute.fragment;
 
     this.tokensAsJson$ = activatedRoute.fragment.pipe(
-      map(fragment => {
-        const params = new URLSearchParams(fragment);
-        return {
-          accessToken: params.get('access_token'),
-          expiresIn: params.get('expires_in'),
-          idToken: params.get('id_token'),
-          type: params.get('token_type'),
-        };
-      }),
-      tap((tokens: Tokens) => {
-        this.storage.setItem('CognitoAccessToken', tokens.accessToken);
-        this.storage.setItem('CognitoIdToken', tokens.idToken);
-      }),
-      map((tokens: Tokens) => JSON.stringify(tokens, null, 2))
+      map(fragment => this.parseTokens(fragment)),
+      tap(tokens => this.storeTokens(tokens)),
+      map(tokens => JSON.stringify(tokens, null, 2))
     );
   }
 
   ngOnInit(): void {
     this.router.navigateByUrl('/guarded');
+  }
+
+  private parseTokens(fragmentOrQueryString: string) {
+    const params = new URLSearchParams(fragmentOrQueryString);
+    return {
+      accessToken: params.get('access_token'),
+      expiresIn: params.get('expires_in'),
+      idToken: params.get('id_token'),
+      type: params.get('token_type'),
+    };
+  }
+
+  private storeTokens(tokens: Tokens) {
+    this.storage.setItem('CognitoAccessToken', tokens.accessToken);
+    this.storage.setItem('CognitoIdToken', tokens.idToken);
   }
 }

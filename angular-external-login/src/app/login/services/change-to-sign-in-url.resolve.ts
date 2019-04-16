@@ -1,4 +1,4 @@
-import { Injectable, InjectionToken } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators';
@@ -21,5 +21,3 @@ export class ChangeToExternalSignInUrl implements Resolve<URL> {
     );
   }
 }
-
-export const ChangeToExternalSignInUrlToken = new InjectionToken<ChangeToExternalSignInUrl>('ChangeToExternalSignInUrl');

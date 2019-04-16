@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { of } from 'rxjs/observable/of';
 
 import { GuardedComponent } from './guarded/guarded.component';
 import { LoginComponent } from './login/login.component';
@@ -8,7 +9,14 @@ import { TutorialComponent } from './tutorial/tutorial.component';
 import { LoginCallbackComponent } from './login/login-callback.component';
 
 const loginRouteData: ExternalUrlRouteData = {
-  targetUrl: new URL('https://skydevelopers.auth.us-east-1.amazoncognito.com/login?response_type=token&client_id=2fe9dfh5ictve3n26c3jjvph2l&redirect_uri=http://localhost:4200/callback')
+  targetUrl: () => {
+    const url = new URL('https://skydevelopers.auth.us-east-1.amazoncognito.com/oauth2/authorize');
+    url.searchParams.append('client_id', '2fe9dfh5ictve3n26c3jjvph2l');
+    url.searchParams.append('redirect_uri', 'http://localhost:4200/callback');
+    url.searchParams.append('response_type', 'token');
+
+    return of(url);
+  },
 };
 
 export const APP_ROUTES: Routes = [

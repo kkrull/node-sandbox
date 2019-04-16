@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { map, tap } from 'rxjs/operators';
+import { Subscription } from 'rxjs/Subscription';
 
 import { ReadWriteStorage } from '../shared/services/storage/read-write-storage.service';
 
@@ -17,22 +17,23 @@ interface Tokens {
   templateUrl: './login-callback.component.html',
   styleUrls: ['./login-callback.component.css']
 })
-export class LoginCallbackComponent implements OnInit {
-  urlFragment$: Observable<string>;
-  tokensAsJson$: Observable<string>;
+export class LoginCallbackComponent implements OnInit, OnDestroy {
+  private tokenSubscription: Subscription;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private storage: ReadWriteStorage) {
-    this.urlFragment$ = activatedRoute.fragment;
-
-    this.tokensAsJson$ = activatedRoute.fragment.pipe(
+    this.tokenSubscription = activatedRoute.fragment.pipe(
       map(fragment => this.parseTokens(fragment)),
       tap(tokens => this.storeTokens(tokens)),
       map(tokens => JSON.stringify(tokens, null, 2))
-    );
+    ).subscribe();
   }
 
   ngOnInit(): void {
     this.router.navigateByUrl('/guarded');
+  }
+
+  ngOnDestroy(): void {
+    this.tokenSubscription.unsubscribe();
   }
 
   private parseTokens(fragmentOrQueryString: string) {

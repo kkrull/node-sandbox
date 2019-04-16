@@ -3,8 +3,8 @@ import { Routes } from '@angular/router';
 import { GuardedComponent } from './guarded/guarded.component';
 import { LoginComponent } from './login/login.component';
 import { LoginCallbackComponent } from './login/login-callback.component';
-import { ChangeToExternalSignInUrlToken } from './login/services/change-to-sign-in-url.resolve';
 import { LogoutComponent } from './login/logout.component';
+import { ChangeToExternalSignInUrlToken } from './login/services/change-to-sign-in-url.resolve';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
 export const APP_ROUTES: Routes = [

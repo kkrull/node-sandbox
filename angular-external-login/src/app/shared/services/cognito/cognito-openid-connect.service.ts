@@ -1,19 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
+import { Environment, EnvironmentToken, IdentityProviderConfig } from '../../../../environments/environment';
 import { OpenIdConnectService } from '../../../login/services/change-to-sign-in-url.resolve';
 
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-
-interface ImplicitAppClientConfig {
-  clientId: string;
-}
-
-interface IdentityProviderConfig {
-  baseUrl: URL;
-  appClient: ImplicitAppClientConfig;
-}
 
 interface OpenIdConnectConfigResponse {
   authorization_endpoint: string;
@@ -23,16 +15,11 @@ interface OpenIdConnectConfigResponse {
 export class CognitoOpenIdConnectService extends OpenIdConnectService {
   private config: IdentityProviderConfig;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              @Inject(EnvironmentToken) private environment: Environment) {
     super();
-
-    // TODO KDK: Move to environment
-    this.config = {
-      baseUrl: new URL('https://cognito-idp.us-east-1.amazonaws.com/us-east-1_N8OfbsdVa'),
-      appClient: {
-        clientId: '2fe9dfh5ictve3n26c3jjvph2l'
-      }
-    };
+    this.config = environment.identityProvider;
+    console.log('config', this.config);
   }
 
   authorizationUrl(): Observable<URL> {

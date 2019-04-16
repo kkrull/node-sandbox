@@ -8,9 +8,11 @@ import { LoginCallbackComponent } from './login/login-callback.component';
 import { ChangeToExternalUrl } from './login/services/change-to-external-url.resolve';
 import { ExternalUrlResolverToken } from './login/services/tokens';
 import { TutorialComponent } from './tutorial/tutorial.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
   declarations: [

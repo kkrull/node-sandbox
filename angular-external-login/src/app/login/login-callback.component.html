@@ -7,12 +7,7 @@
 
 <div>
   <h2>Parsed</h2>
-  <div *ngIf="tokens$ | async as tokens">
-    <ul>
-      <li>Access Token: {{tokens.accessToken}}</li>
-      <li>Expires In: {{tokens.expiresIn}}</li>
-      <li>ID Token: {{tokens.idToken}}</li>
-      <li>Type: {{tokens.type}}</li>
-    </ul>
+  <div *ngIf="tokensAsJson$ | async as tokens">
+    <pre>{{tokens}}</pre>
   </div>
 </div>

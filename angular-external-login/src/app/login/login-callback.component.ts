@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 interface Tokens {
   accessToken: string;
@@ -17,12 +17,12 @@ interface Tokens {
 })
 export class LoginCallbackComponent {
   urlFragment$: Observable<string>;
-  tokens$: Observable<Tokens>;
+  tokensAsJson$: Observable<string>;
 
   constructor(private route: ActivatedRoute) {
     this.urlFragment$ = route.fragment;
 
-    this.tokens$ = route.fragment.pipe(
+    this.tokensAsJson$ = route.fragment.pipe(
       map(fragment => {
         const params = new URLSearchParams(fragment);
         return {
@@ -31,7 +31,8 @@ export class LoginCallbackComponent {
           idToken: params.get('id_token'),
           type: params.get('token_type'),
         };
-      })
+      }),
+      map(tokens => JSON.stringify(tokens, null, 2))
     );
   }
 }

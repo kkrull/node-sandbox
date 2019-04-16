@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 
-import { Environment, EnvironmentToken, IdentityProviderConfig } from '../../../../environments/environment';
+import { Environment, IdentityProviderConfig } from '../../../../environments/environment.service';
+import { EnvironmentToken } from '../../../../environments/environment.service';
 import { OpenIdConnectService } from '../../../login/services/change-to-sign-in-url.resolve';
 
 import { Observable } from 'rxjs/Observable';

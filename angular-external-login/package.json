@@ -8,6 +8,7 @@
     "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve",
+    "start:cognito": "ng serve --environment=cognito",
     "test": "ng test --watch=false"
   },
   "private": true,

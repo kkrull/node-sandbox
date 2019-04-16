@@ -3,30 +3,14 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
-import { InjectionToken } from '@angular/core';
-
-export interface ImplicitAppClientConfig {
-  clientId: string;
-}
-
-export interface IdentityProviderConfig {
-  baseUrl: URL;
-  appClient: ImplicitAppClientConfig;
-}
-
-export interface Environment {
-  production: boolean;
-  identityProvider: IdentityProviderConfig;
-}
+import { Environment } from './environment.service';
 
 export const environment: Environment = {
   production: false,
   identityProvider: {
-    baseUrl: new URL('https://cognito-idp.us-east-1.amazonaws.com/us-east-1_N8OfbsdVa'),
+    baseUrl: new URL('https://cognito-idp.<aws_region>.amazonaws.com/<user_pool_id>'),
     appClient: {
-      clientId: '2fe9dfh5ictve3n26c3jjvph2l'
+      clientId: 'app_client_id'
     }
   }
 };
-
-export const EnvironmentToken: InjectionToken<Environment> = new InjectionToken('Environment');

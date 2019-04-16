@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
+## Environment Setup
+
+**Note: You must set up the environment before this app will run.**
+
+Either edit `src/environments/environment.ts` with the User Pool and App Client settings for your Cognito User Pool,
+or create your own file in `src/environemnts/environment.<name>.ts` and run with `npm start -- --environment=<name>`.
+An entry will need to be added to `.angular-cli.json`.
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

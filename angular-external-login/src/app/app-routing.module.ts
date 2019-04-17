@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
-import { CognitoAuthGuard } from './shared/services/cognito/cognito-auth-guard';
+import { AuthGuard } from './shared/services/cognito/auth-guard';
 import { CognitoOpenIdConnectService } from './shared/services/cognito/cognito-openid-connect.service';
 import { CognitoTokenStorageService } from './shared/services/cognito/token-storage-service';
 import { TokenStorageService } from './shared/services/interfaces/token-storage.service';
@@ -30,10 +30,10 @@ import { ReferenceComponent } from './reference/reference.component';
   providers: [
     ChangeToExternalSignInUrl,
     {
-      provide: CognitoAuthGuard,
+      provide: AuthGuard,
       deps: [TokenStorageService, Router],
       useFactory: (storage: TokenStorageService, router: Router) =>
-        new CognitoAuthGuard(storage, router, ['/login'])
+        new AuthGuard(storage, router, ['/login'])
     },
     { provide: OpenIdConnectService, useClass: CognitoOpenIdConnectService },
     { provide: TokenStorageService, useClass: CognitoTokenStorageService }

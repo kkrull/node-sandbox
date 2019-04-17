@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, CanActivate, NavigationExtras, Router, RouterSt
 import { TokenStorageService } from '../interfaces/token-storage.service';
 
 @Injectable()
-export class CognitoAuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
   constructor(private storage: TokenStorageService,
               private router: Router,
               private loginRoute: string[]) { }

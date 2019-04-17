@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { AuthGuard } from './shared/services/cognito/auth-guard';
+import { AuthGuard } from './lib/auth-guard';
 
 import { LoginComponent } from './auth/login.component';
 import { LoginCallbackComponent } from './auth/login-callback.component';

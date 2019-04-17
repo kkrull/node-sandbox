@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
-import { AuthGuard } from './shared/services/cognito/auth-guard';
+import { AuthGuard } from './lib/auth-guard';
 import { CognitoOpenIdConnectService } from './shared/services/cognito/cognito-openid-connect.service';
 import { CognitoTokenStorageService } from './shared/services/cognito/token-storage-service';
 import { TokenStorageService } from './shared/services/interfaces/token-storage.service';

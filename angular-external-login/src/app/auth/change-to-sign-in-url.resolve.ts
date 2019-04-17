@@ -3,9 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators';
 
-export abstract class OpenIdConnectService {
-  abstract authorizationUrl(): Observable<URL>;
-}
+import { OpenIdConnectService } from '../shared/services/interfaces/openid-connect.service';
 
 // Resolves to nothing, but has a handy side-effect of changing completely out of this app, to another URL
 @Injectable()

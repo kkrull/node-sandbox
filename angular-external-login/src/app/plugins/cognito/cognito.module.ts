@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { OpenIdConnectService } from '../../auth/change-to-sign-in-url.resolve';
+import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
 import { TokenStorageService } from '../../shared/services/interfaces/token-storage.service';
 
 import { AuthGuard, LoginRouteToken } from './auth-guard';

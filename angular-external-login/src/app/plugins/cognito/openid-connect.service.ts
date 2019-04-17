@@ -4,9 +4,9 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
-import { OpenIdConnectService } from '../../auth/change-to-sign-in-url.resolve';
 import { Environment, IdentityProviderConfig } from '../../../environments/environment.service';
 import { EnvironmentToken } from '../../../environments/environment.service';
+import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
 
 interface OpenIdConnectConfigResponse {
   authorization_endpoint: string;

@@ -5,8 +5,8 @@ import { Router, RouterModule } from '@angular/router';
 import { CognitoAuthGuard } from './shared/services/cognito/cognito-auth-guard';
 import { CognitoOpenIdConnectService } from './shared/services/cognito/cognito-openid-connect.service';
 import { CognitoTokenStorageService } from './shared/services/cognito/token-storage-service';
+import { ReadWriteStorage } from './shared/services/interfaces/read-write-storage.service';
 import { TokenStorageService } from './shared/services/interfaces/token-storage.service';
-import { ReadWriteStorage } from './shared/services/storage/read-write-storage.service';
 
 import { APP_ROUTES } from './app.routes';
 import { LoginComponent } from './auth/login.component';

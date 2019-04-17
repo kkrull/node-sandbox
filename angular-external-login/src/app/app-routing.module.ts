@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import { CognitoAuthGuard } from './shared/services/auth/auth-guard';
 import { CognitoOpenIdConnectService } from './shared/services/cognito/cognito-openid-connect.service';
@@ -28,7 +28,11 @@ import { TutorialComponent } from './tutorial/tutorial.component';
   ],
   providers: [
     ChangeToExternalSignInUrl,
-    CognitoAuthGuard,
+    {
+      provide: CognitoAuthGuard,
+      deps: [ReadWriteStorage, Router],
+      useFactory: (storage: ReadWriteStorage, router: Router) => new CognitoAuthGuard(storage, router, ['/login'])
+    },
     { provide: OpenIdConnectService, useClass: CognitoOpenIdConnectService },
     { provide: ReadWriteStorage, useValue: localStorage },
   ],

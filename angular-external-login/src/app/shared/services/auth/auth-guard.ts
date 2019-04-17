@@ -1,17 +1,13 @@
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, NavigationExtras, Router, RouterStateSnapshot } from '@angular/router';
 
 import { ReadWriteStorage } from '../storage/read-write-storage.service';
-import { Injectable } from '@angular/core';
-
-export abstract class AuthGuard implements CanActivate {
-  abstract canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean;
-}
 
 @Injectable()
-export class CognitoAuthGuard extends AuthGuard {
-  constructor(private storage: ReadWriteStorage, private router: Router) {
-    super();
-  }
+export class CognitoAuthGuard implements CanActivate {
+  constructor(private storage: ReadWriteStorage,
+              private router: Router,
+              private loginRoute: string[]) { }
 
   canActivate(_route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const accessToken = this.storage.getItem('CognitoAccessToken');
@@ -19,7 +15,13 @@ export class CognitoAuthGuard extends AuthGuard {
       return true;
     }
 
-    this.router.navigate(['/login'], { queryParams: { return_route: state.url } });
+    this.router.navigate(this.loginRoute, this.returnToRoute(state.url));
     return false;
+  }
+
+  private returnToRoute(returnRoute: string): NavigationExtras {
+    return {
+      queryParams: { return_route: returnRoute }
+    };
   }
 }

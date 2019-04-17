@@ -14,7 +14,7 @@ export class ChangeToExternalSignInUrl implements Resolve<URL> {
 
   resolve(_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<URL> {
     return this.identityProviderService.authorizationUrl().pipe(
-      tap((targetUrl: URL) => {
+      tap(targetUrl => {
         window.location.href = targetUrl.href;
       })
     );

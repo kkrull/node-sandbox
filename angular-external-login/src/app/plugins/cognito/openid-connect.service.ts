@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 
@@ -31,7 +32,7 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
 
   private configUrl(): URL {
     const configUrl = new URL(this.config.baseUrl.href);
-    configUrl.pathname = configUrl.pathname + '/.well-known/openid-configuration';
+    configUrl.pathname = Location.joinWithSlash(configUrl.pathname, '.well-known/openid-configuration');
     return configUrl;
   }
 

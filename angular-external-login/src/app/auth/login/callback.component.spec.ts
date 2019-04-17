@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { TokenStorageService } from '../shared/services/interfaces/token-storage.service';
+import { TokenStorageService } from '../../shared/services/interfaces/token-storage.service';
 
-import { LoginCallbackComponent } from './login-callback.component';
+import { CallbackComponent } from './callback.component';
 
 @Component({
   selector: 'app-stub-component',
@@ -12,9 +12,9 @@ import { LoginCallbackComponent } from './login-callback.component';
 })
 class StubComponent {}
 
-describe('LoginCallbackComponent', () => {
-  let component: LoginCallbackComponent;
-  let fixture: ComponentFixture<LoginCallbackComponent>;
+describe('CallbackComponent', () => {
+  let component: CallbackComponent;
+  let fixture: ComponentFixture<CallbackComponent>;
   let storage: jasmine.SpyObj<TokenStorageService>;
 
   beforeEach(async(() => {
@@ -26,7 +26,7 @@ describe('LoginCallbackComponent', () => {
         ])
       ],
       declarations: [
-        LoginCallbackComponent,
+        CallbackComponent,
         StubComponent
       ],
       providers: [
@@ -36,7 +36,7 @@ describe('LoginCallbackComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginCallbackComponent);
+    fixture = TestBed.createComponent(CallbackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

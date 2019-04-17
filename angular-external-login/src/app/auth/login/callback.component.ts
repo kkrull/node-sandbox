@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
 
-import { TokenStorageService } from '../shared/services/interfaces/token-storage.service';
+import { TokenStorageService } from '../../shared/services/interfaces/token-storage.service';
 
 interface Tokens {
   accessToken: string;
@@ -14,10 +14,10 @@ interface Tokens {
 
 @Component({
   selector: 'app-login-callback',
-  templateUrl: './login-callback.component.html',
-  styleUrls: ['./login-callback.component.css']
+  templateUrl: './callback.component.html',
+  styleUrls: ['./callback.component.css']
 })
-export class LoginCallbackComponent implements OnInit, OnDestroy {
+export class CallbackComponent implements OnInit, OnDestroy {
   private tokenSubscription: Subscription;
 
   constructor(private router: Router,

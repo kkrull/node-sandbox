@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { CognitoAuthGuard } from './shared/services/auth/auth-guard';
+
 import { GuardedComponent } from './guarded/guarded.component';
 import { LoginComponent } from './login/login.component';
 import { LoginCallbackComponent } from './login/login-callback.component';
@@ -14,7 +16,8 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'guarded',
-    component: GuardedComponent
+    component: GuardedComponent,
+    canActivate: [CognitoAuthGuard]
   },
   {
     path: 'login',

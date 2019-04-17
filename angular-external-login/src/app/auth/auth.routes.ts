@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { ChangeToExternalSignInUrl } from '../lib/change-to-sign-in-url.resolve';
-
+import { ChangeToExternalSignInUrl } from './change-to-sign-in-url.resolve';
 import { LoginComponent } from './login.component';
 import { LoginCallbackComponent } from './login-callback.component';
 import { LogoutComponent } from './logout.component';

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './lib/auth-guard';
-import { ChangeToExternalSignInUrl, OpenIdConnectService } from './lib/change-to-sign-in-url.resolve';
+import { OpenIdConnectService } from './auth/change-to-sign-in-url.resolve';
 import { CognitoOpenIdConnectService } from './shared/services/cognito/cognito-openid-connect.service';
 import { CognitoTokenStorageService } from './shared/services/cognito/token-storage-service';
 import { TokenStorageService } from './shared/services/interfaces/token-storage.service';

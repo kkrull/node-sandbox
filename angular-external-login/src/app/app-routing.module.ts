@@ -24,7 +24,6 @@ import { ReferenceComponent } from './reference/reference.component';
     ReferenceComponent
   ],
   providers: [
-    ChangeToExternalSignInUrl,
     {
       provide: AuthGuard,
       deps: [TokenStorageService, Router],

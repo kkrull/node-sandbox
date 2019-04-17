@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
 
-import { ReadWriteStorage } from '../shared/services/storage/read-write-storage.service';
+import { TokenStorageService } from '../shared/services/interfaces/token-storage.service';
 
 @Component({
   selector: 'app-guarded',
@@ -17,7 +17,7 @@ export class GuardedComponent implements OnInit {
   accessToken$: Observable<string>;
   idToken$: Observable<string>;
 
-  constructor(private storage: ReadWriteStorage) {
+  constructor(private storage: TokenStorageService) {
     this.accessTokenSubject$ = new ReplaySubject();
     this.accessToken$ = this.accessTokenSubject$.asObservable();
 
@@ -26,7 +26,7 @@ export class GuardedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.accessTokenSubject$.next(this.storage.getItem('CognitoAccessToken'));
-    this.idTokenSubject$.next(this.storage.getItem('CognitoIdToken'));
+    this.accessTokenSubject$.next(this.storage.readAccessToken());
+    this.idTokenSubject$.next(this.storage.readIdentityToken());
   }
 }

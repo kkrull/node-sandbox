@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ReadWriteStorage } from '../shared/services/storage/read-write-storage.service';
+import { TokenStorageService } from '../shared/services/interfaces/token-storage.service';
 
 @Component({
   selector: 'app-logout',
@@ -9,7 +9,7 @@ import { ReadWriteStorage } from '../shared/services/storage/read-write-storage.
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
-  constructor(private router: Router, private storage: ReadWriteStorage) { }
+  constructor(private router: Router, private storage: TokenStorageService) { }
 
   ngOnInit() {
     this.removeStoredTokens();
@@ -17,8 +17,7 @@ export class LogoutComponent implements OnInit {
   }
 
   private removeStoredTokens() {
-    this.storage.removeItem('CognitoAccessToken');
-    this.storage.removeItem('CognitoIdToken');
+    this.storage.removeAllTokens();
   }
 
   private routeToHomePage() {

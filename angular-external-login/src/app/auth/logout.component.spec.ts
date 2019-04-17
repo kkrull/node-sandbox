@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { ReadWriteStorage } from '../shared/services/storage/read-write-storage.service';
+import { TokenStorageService } from '../shared/services/interfaces/token-storage.service';
 
 import { LogoutComponent } from './logout.component';
 
@@ -15,10 +15,10 @@ class StubComponent {}
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
   let fixture: ComponentFixture<LogoutComponent>;
-  let storage: jasmine.SpyObj<ReadWriteStorage>;
+  let storage: jasmine.SpyObj<TokenStorageService>;
 
   beforeEach(async(() => {
-    storage = jasmine.createSpyObj('ReadWriteStorage', ['getItem', 'removeItem', 'setItem']);
+    storage = jasmine.createSpyObj('TokenStorageService', ['removeAllTokens']);
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule.withRoutes([
@@ -30,7 +30,7 @@ describe('LogoutComponent', () => {
         StubComponent
       ],
       providers: [
-        { provide: ReadWriteStorage, useValue: storage }
+        { provide: TokenStorageService, useValue: storage }
       ]
     }).compileComponents();
   }));

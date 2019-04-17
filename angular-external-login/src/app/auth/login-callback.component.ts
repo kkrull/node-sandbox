@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ReadWriteStorage } from '../shared/services/storage/read-write-storage.service';
+import { TokenStorageService } from '../shared/services/interfaces/token-storage.service';
 
 interface Tokens {
   accessToken: string;
@@ -20,7 +20,10 @@ interface Tokens {
 export class LoginCallbackComponent implements OnInit, OnDestroy {
   private tokenSubscription: Subscription;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private storage: ReadWriteStorage) {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private storage: TokenStorageService) {
+
     this.tokenSubscription = activatedRoute.fragment.pipe(
       map(fragment => this.parseTokens(fragment)),
       tap(tokens => this.storeTokens(tokens)),
@@ -47,8 +50,8 @@ export class LoginCallbackComponent implements OnInit, OnDestroy {
   }
 
   private storeTokens(tokens: Tokens) {
-    this.storage.setItem('CognitoAccessToken', tokens.accessToken);
-    this.storage.setItem('CognitoIdToken', tokens.idToken);
+    this.storage.saveAccessToken(tokens.accessToken);
+    this.storage.saveIdentityToken(tokens.idToken);
   }
 
   private routeToGuardedPage() {

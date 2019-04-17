@@ -32,8 +32,8 @@ import { ReferenceComponent } from './reference/reference.component';
     ChangeToExternalSignInUrl,
     {
       provide: CognitoAuthGuard,
-      deps: [ReadWriteStorage, Router],
-      useFactory: (storage: ReadWriteStorage, router: Router) =>
+      deps: [TokenStorageService, Router],
+      useFactory: (storage: TokenStorageService, router: Router) =>
         new CognitoAuthGuard(storage, router, ['/login'])
     },
     { provide: OpenIdConnectService, useClass: CognitoOpenIdConnectService },

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReadWriteStorage } from '../shared/services/storage/read-write-storage.service';
+import { TokenStorageService } from '../shared/services/interfaces/token-storage.service';
 
 import { GuardedComponent } from './guarded.component';
 
 describe('GuardedComponent', () => {
   let component: GuardedComponent;
   let fixture: ComponentFixture<GuardedComponent>;
-  let storage: jasmine.SpyObj<ReadWriteStorage>;
+  let storage: jasmine.SpyObj<TokenStorageService>;
 
   beforeEach(async(() => {
-    storage = jasmine.createSpyObj('ReadWriteStorage', ['getItem', 'setItem']);
+    storage = jasmine.createSpyObj('TokenStorageService', ['readAccessToken', 'readIdentityToken']);
     TestBed.configureTestingModule({
       declarations: [GuardedComponent],
       providers: [
-        { provide: ReadWriteStorage, useValue: storage }
+        { provide: TokenStorageService, useValue: storage }
       ]
     }).compileComponents();
   }));

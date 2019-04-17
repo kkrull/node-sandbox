@@ -2,11 +2,11 @@ import { Routes } from '@angular/router';
 
 import { CognitoAuthGuard } from './shared/services/cognito/cognito-auth-guard';
 
+import { LoginComponent } from './auth/login.component';
+import { LoginCallbackComponent } from './auth/login-callback.component';
+import { LogoutComponent } from './auth/logout.component';
+import { ChangeToExternalSignInUrl } from './auth/services/change-to-sign-in-url.resolve';
 import { GuardedComponent } from './guarded/guarded.component';
-import { LoginComponent } from './login/login.component';
-import { LoginCallbackComponent } from './login/login-callback.component';
-import { LogoutComponent } from './login/logout.component';
-import { ChangeToExternalSignInUrl } from './login/services/change-to-sign-in-url.resolve';
 import { TutorialComponent } from './tutorial/tutorial.component';
 
 export const APP_ROUTES: Routes = [

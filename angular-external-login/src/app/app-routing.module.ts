@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
-import { CognitoAuthGuard } from './shared/services/auth/auth-guard';
+import { CognitoAuthGuard } from './shared/services/cognito/cognito-auth-guard';
 import { CognitoOpenIdConnectService } from './shared/services/cognito/cognito-openid-connect.service';
 import { ReadWriteStorage } from './shared/services/storage/read-write-storage.service';
 
@@ -31,11 +31,12 @@ import { TutorialComponent } from './tutorial/tutorial.component';
     {
       provide: CognitoAuthGuard,
       deps: [ReadWriteStorage, Router],
-      useFactory: (storage: ReadWriteStorage, router: Router) => new CognitoAuthGuard(storage, router, ['/login'])
+      useFactory: (storage: ReadWriteStorage, router: Router) =>
+        new CognitoAuthGuard(storage, router, ['/login'])
     },
     { provide: OpenIdConnectService, useClass: CognitoOpenIdConnectService },
     { provide: ReadWriteStorage, useValue: localStorage },
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

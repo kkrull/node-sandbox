@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { CognitoAuthGuard } from './shared/services/auth/auth-guard';
+import { CognitoAuthGuard } from './shared/services/cognito/cognito-auth-guard';
 
 import { GuardedComponent } from './guarded/guarded.component';
 import { LoginComponent } from './login/login.component';

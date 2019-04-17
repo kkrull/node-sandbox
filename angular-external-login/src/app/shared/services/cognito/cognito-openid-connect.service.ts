@@ -20,7 +20,6 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
               @Inject(EnvironmentToken) private environment: Environment) {
     super();
     this.config = environment.identityProvider;
-    console.log('config', this.config);
   }
 
   authorizationUrl(): Observable<URL> {

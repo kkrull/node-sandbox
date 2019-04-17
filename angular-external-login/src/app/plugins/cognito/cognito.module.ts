@@ -11,7 +11,7 @@ import { CognitoTokenStorageService } from './token-storage-service';
   imports: [],
   providers: [
     AuthGuard,
-    { provide: LoginRouteToken, useValue: ['/auth/login'] },
+    { provide: LoginRouteToken, useValue: ['/auth', 'login'] },
     { provide: OpenIdConnectService, useClass: CognitoOpenIdConnectService },
     { provide: TokenStorageService, useClass: CognitoTokenStorageService }
   ],

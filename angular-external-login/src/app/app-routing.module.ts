@@ -1,12 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
-import { AuthGuard } from './lib/auth-guard';
-import { OpenIdConnectService } from './auth/change-to-sign-in-url.resolve';
-import { CognitoOpenIdConnectService } from './shared/services/cognito/cognito-openid-connect.service';
-import { CognitoTokenStorageService } from './shared/services/cognito/token-storage-service';
-import { TokenStorageService } from './shared/services/interfaces/token-storage.service';
+import { CognitoModule } from './plugins/cognito/cognito.module';
 
 import { APP_ROUTES } from './app.routes';
 import { AuthModule } from './auth/auth.module';
@@ -15,24 +11,16 @@ import { ReferenceComponent } from './reference/reference.component';
 
 @NgModule({
   imports: [
+    AuthModule,
     CommonModule,
-    RouterModule.forRoot(APP_ROUTES),
-    AuthModule
+    CognitoModule,
+    RouterModule.forRoot(APP_ROUTES)
   ],
   declarations: [
     GuardedComponent,
     ReferenceComponent
   ],
-  providers: [
-    {
-      provide: AuthGuard,
-      deps: [TokenStorageService, Router],
-      useFactory: (storage: TokenStorageService, router: Router) =>
-        new AuthGuard(storage, router, ['/auth/login'])
-    },
-    { provide: OpenIdConnectService, useClass: CognitoOpenIdConnectService },
-    { provide: TokenStorageService, useClass: CognitoTokenStorageService }
-  ],
+  providers: [],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

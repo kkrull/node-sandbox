@@ -11,7 +11,7 @@ import { APP_ROUTES } from './app.routes';
 import { LoginComponent } from './auth/login.component';
 import { LoginCallbackComponent } from './auth/login-callback.component';
 import { LogoutComponent } from './auth/logout.component';
-import { ChangeToExternalSignInUrl, OpenIdConnectService } from './auth/services/change-to-sign-in-url.resolve';
+import { ChangeToExternalSignInUrl, OpenIdConnectService } from './lib/change-to-sign-in-url.resolve';
 import { GuardedComponent } from './guarded/guarded.component';
 import { ReferenceComponent } from './reference/reference.component';
 

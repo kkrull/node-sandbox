@@ -4,7 +4,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
-import { OpenIdConnectService } from '../../../auth/services/change-to-sign-in-url.resolve';
+import { OpenIdConnectService } from '../../../lib/change-to-sign-in-url.resolve';
 import { Environment, IdentityProviderConfig } from '../../../../environments/environment.service';
 import { EnvironmentToken } from '../../../../environments/environment.service';
 

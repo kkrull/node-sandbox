@@ -33,7 +33,7 @@ import { ReferenceComponent } from './reference/reference.component';
       provide: AuthGuard,
       deps: [TokenStorageService, Router],
       useFactory: (storage: TokenStorageService, router: Router) =>
-        new AuthGuard(storage, router, ['/login'])
+        new AuthGuard(storage, router, ['/auth/login'])
     },
     { provide: OpenIdConnectService, useClass: CognitoOpenIdConnectService },
     { provide: TokenStorageService, useClass: CognitoTokenStorageService }

@@ -47,7 +47,7 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
   private authorizeThisApp(authorizationEndpoint: string): URL {
     const authorizationUrl = new URL(authorizationEndpoint);
     authorizationUrl.searchParams.append('client_id', this.config.appClient.clientId);
-    authorizationUrl.searchParams.append('redirect_uri', 'http://localhost:4200/callback');
+    authorizationUrl.searchParams.append('redirect_uri', 'http://localhost:4200/auth/callback');
     authorizationUrl.searchParams.append('response_type', 'token');
     return authorizationUrl;
   }

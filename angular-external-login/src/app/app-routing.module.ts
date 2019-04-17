@@ -5,7 +5,6 @@ import { Router, RouterModule } from '@angular/router';
 import { CognitoAuthGuard } from './shared/services/cognito/cognito-auth-guard';
 import { CognitoOpenIdConnectService } from './shared/services/cognito/cognito-openid-connect.service';
 import { CognitoTokenStorageService } from './shared/services/cognito/token-storage-service';
-import { ReadWriteStorage } from './shared/services/interfaces/read-write-storage.service';
 import { TokenStorageService } from './shared/services/interfaces/token-storage.service';
 
 import { APP_ROUTES } from './app.routes';
@@ -37,7 +36,6 @@ import { ReferenceComponent } from './reference/reference.component';
         new CognitoAuthGuard(storage, router, ['/login'])
     },
     { provide: OpenIdConnectService, useClass: CognitoOpenIdConnectService },
-    { provide: ReadWriteStorage, useValue: localStorage },
     { provide: TokenStorageService, useClass: CognitoTokenStorageService }
   ],
   exports: [RouterModule]

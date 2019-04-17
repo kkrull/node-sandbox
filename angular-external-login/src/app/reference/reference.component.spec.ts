@@ -1,16 +1,16 @@
 import { async, TestBed } from '@angular/core/testing';
 
-import { TutorialComponent } from './tutorial.component';
+import { ReferenceComponent } from './reference.component';
 
-describe('TutorialComponent', () => {
+describe('ReferenceComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TutorialComponent],
+      declarations: [ReferenceComponent],
     }).compileComponents();
   }));
 
   it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(TutorialComponent);
+    const fixture = TestBed.createComponent(ReferenceComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));

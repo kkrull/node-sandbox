@@ -7,7 +7,7 @@ import { LoginCallbackComponent } from './auth/login-callback.component';
 import { LogoutComponent } from './auth/logout.component';
 import { ChangeToExternalSignInUrl } from './auth/services/change-to-sign-in-url.resolve';
 import { GuardedComponent } from './guarded/guarded.component';
-import { TutorialComponent } from './tutorial/tutorial.component';
+import { ReferenceComponent } from './reference/reference.component';
 
 export const APP_ROUTES: Routes = [
   {
@@ -31,7 +31,7 @@ export const APP_ROUTES: Routes = [
     component: LogoutComponent
   },
   {
-    path: 'tutorial',
-    component: TutorialComponent
+    path: 'reference',
+    component: ReferenceComponent
   }
 ];

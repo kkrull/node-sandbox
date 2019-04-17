@@ -12,7 +12,7 @@ import { LoginCallbackComponent } from './auth/login-callback.component';
 import { LogoutComponent } from './auth/logout.component';
 import { ChangeToExternalSignInUrl, OpenIdConnectService } from './auth/services/change-to-sign-in-url.resolve';
 import { GuardedComponent } from './guarded/guarded.component';
-import { TutorialComponent } from './tutorial/tutorial.component';
+import { ReferenceComponent } from './reference/reference.component';
 
 @NgModule({
   imports: [
@@ -24,7 +24,7 @@ import { TutorialComponent } from './tutorial/tutorial.component';
     LoginCallbackComponent,
     LoginComponent,
     LogoutComponent,
-    TutorialComponent
+    ReferenceComponent
   ],
   providers: [
     ChangeToExternalSignInUrl,

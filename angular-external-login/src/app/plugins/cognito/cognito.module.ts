@@ -8,16 +8,18 @@ import { TokenStorageService } from '../../shared/services/interfaces/token-stor
 import { AuthGuard } from './auth-guard';
 import { CognitoOpenIdConnectService } from './openid-connect.service';
 import { CognitoTokenStorageService } from './token-storage-service';
-
-export interface CognitoConfig {
-  baseUrl: URL;
-  appClient: {
-    clientId: string;
-  };
-}
+import { CognitoConfig, CognitoConfigToken, LoginRouteToken } from './tokens';
 
 export interface WebAppRoutes {
   loginRoute: any[];
+}
+
+export function makeAuthGuard(loginRoute: any[], tokenStorage: TokenStorageService, router: Router): AuthGuard {
+  return new AuthGuard(loginRoute, tokenStorage, router);
+}
+
+export function makeOpenIdConnectService(idpConfig: CognitoConfig, http: HttpClient): OpenIdConnectService {
+  return new CognitoOpenIdConnectService(idpConfig, http);
 }
 
 @NgModule()
@@ -28,19 +30,15 @@ export class CognitoModule {
       providers: [
         {
           provide: AuthGuard,
-          deps: [TokenStorageService, Router],
-          useFactory: (tokenStorage: TokenStorageService, router: Router) =>
-            new AuthGuard(routes.loginRoute, tokenStorage, router)
+          deps: [LoginRouteToken, TokenStorageService, Router],
+          useFactory: makeAuthGuard
         },
+        { provide: CognitoConfigToken, useValue: idpConfig },
+        { provide: LoginRouteToken, useValue: routes.loginRoute },
         {
           provide: OpenIdConnectService,
-          deps: [HttpClient],
-          useFactory: (http: HttpClient) =>
-            new CognitoOpenIdConnectService(
-              http,
-              idpConfig.baseUrl,
-              idpConfig.appClient.clientId
-            )
+          deps: [CognitoConfigToken, HttpClient],
+          useFactory: makeOpenIdConnectService
         },
         { provide: TokenStorageService, useClass: CognitoTokenStorageService }
       ]

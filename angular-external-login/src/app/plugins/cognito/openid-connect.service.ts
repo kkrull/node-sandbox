@@ -1,11 +1,12 @@
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
 import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
+
+import { CognitoConfig, CognitoConfigToken } from './tokens';
 
 interface OpenIdConnectConfigResponse {
   authorization_endpoint: string;
@@ -13,10 +14,15 @@ interface OpenIdConnectConfigResponse {
 
 @Injectable()
 export class CognitoOpenIdConnectService extends OpenIdConnectService {
-  constructor(private http: HttpClient,
-              private baseUrl: URL,
-              private clientId: string) {
+  private baseUrl: URL;
+  private clientId: string;
+
+  constructor(@Inject(CognitoConfigToken) private idpConfig: CognitoConfig,
+              private http: HttpClient) {
+
     super();
+    this.baseUrl = idpConfig.baseUrl;
+    this.clientId = idpConfig.appClient.clientId;
   }
 
   authorizationUrl(redirectUri: URL): Observable<URL> {

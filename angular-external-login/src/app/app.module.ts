@@ -8,13 +8,15 @@ import { ReadWriteStorage } from './shared/services/storage-interfaces';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CognitoServiceModule } from './plugins/cognito/cognito.module';
+import { IdentityServerServiceModule } from './plugins/identityserver/identity-server.module';
 
 @NgModule({
   imports: [
     AppRoutingModule,
     BrowserModule,
-    CognitoServiceModule.forRoot(environment.identityProvider),
+    // CognitoServiceModule.forRoot(environment.identityProvider),
     HttpClientModule,
+    IdentityServerServiceModule.forRoot(environment.identityProvider),
   ],
   declarations: [AppComponent],
   providers: [

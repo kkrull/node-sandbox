@@ -9,6 +9,7 @@
       "environments": {
         "cognito": "environments/environment.cognito.ts",
         "dev": "environments/environment.ts",
+        "identity-server-demo": "environments/environment.identity-server-demo.ts",
         "prod": "environments/environment.prod.ts"
       },
       "environmentSource": "environments/environment.ts",

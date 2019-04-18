@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { empty } from 'rxjs/observable/empty';
 
 import { LoginComponent } from './login.component';
-import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
+import { OpenIdConnectService } from '../../shared/services/identity-provider-plugin-interfaces';
 import { NavigationService } from '../services/window-navigation.service';
 
 describe('LoginComponent', () => {

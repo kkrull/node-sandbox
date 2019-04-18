@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { ReadWriteStorage } from '../../shared/services/interfaces/read-write-storage.service';
-import { TokenStorageService } from '../../shared/services/interfaces/token-storage.service';
+import { ReadWriteStorage } from '../../shared/services/storage-interfaces';
+import { TokenStorageService } from '../../shared/services/identity-provider-plugin-interfaces';
 
 const ACCESS_TOKEN = 'CognitoAccessToken';
 const ID_TOKEN = 'CognitoIdToken';

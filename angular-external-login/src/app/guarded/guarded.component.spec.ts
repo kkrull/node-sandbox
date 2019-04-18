@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TokenStorageService } from '../shared/services/interfaces/token-storage.service';
+import { TokenStorageService } from '../shared/services/identity-provider-plugin-interfaces';
 
 import { GuardedComponent } from './guarded.component';
 

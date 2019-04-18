@@ -4,7 +4,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
-import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
+import { OpenIdConnectService } from '../../shared/services/identity-provider-plugin-interfaces';
 
 import { CognitoConfig, CognitoConfigToken } from './tokens';
 

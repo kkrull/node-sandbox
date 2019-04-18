@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
 
-import { TokenStorageService } from '../../shared/services/interfaces/token-storage.service';
+import { TokenStorageService } from '../../shared/services/identity-provider-plugin-interfaces';
 
 interface Tokens {
   accessToken: string;

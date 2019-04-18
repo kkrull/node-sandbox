@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
-import { TokenStorageService } from '../../shared/services/interfaces/token-storage.service';
+import { OpenIdConnectService, TokenStorageService } from '../../shared/services/identity-provider-plugin-interfaces';
 
 import { AuthGuard } from './auth-guard';
 import { CognitoOpenIdConnectService } from './openid-connect.service';
@@ -23,10 +22,10 @@ export function makeOpenIdConnectService(idpConfig: CognitoConfig, http: HttpCli
 }
 
 @NgModule()
-export class CognitoModule {
+export class CognitoServiceModule {
   static forRoot(idpConfig: CognitoConfig, routes: WebAppRoutes): ModuleWithProviders {
     return {
-      ngModule: CognitoModule,
+      ngModule: CognitoServiceModule,
       providers: [
         {
           provide: AuthGuard,

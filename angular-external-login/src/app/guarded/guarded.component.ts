@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
 
-import { TokenStorageService } from '../shared/services/interfaces/token-storage.service';
+import { TokenStorageService } from '../shared/services/identity-provider-plugin-interfaces';
 
 @Component({
   selector: 'app-guarded',

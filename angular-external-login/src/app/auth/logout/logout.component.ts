@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { TokenStorageService } from '../../shared/services/interfaces/token-storage.service';
+import { TokenStorageService } from '../../shared/services/identity-provider-plugin-interfaces';
 
 @Component({
   selector: 'app-logout',

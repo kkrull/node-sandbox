@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { take } from 'rxjs/operators';
 
-import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
+import { OpenIdConnectService } from '../../shared/services/identity-provider-plugin-interfaces';
 import { NavigationService } from '../services/window-navigation.service';
 
 @Component({

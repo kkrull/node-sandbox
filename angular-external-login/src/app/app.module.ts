@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { environment } from '../environments/environment';
-import { ReadWriteStorage } from './shared/services/interfaces/read-write-storage.service';
+import { ReadWriteStorage } from './shared/services/storage-interfaces';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CognitoModule } from './plugins/cognito/cognito.module';
+import { CognitoServiceModule } from './plugins/cognito/cognito.module';
 
 @NgModule({
   imports: [
     AppRoutingModule,
     BrowserModule,
-    CognitoModule.forRoot(environment.identityProvider, {
+    CognitoServiceModule.forRoot(environment.identityProvider, {
       loginRoute: ['/auth', 'login']
     }),
     HttpClientModule,

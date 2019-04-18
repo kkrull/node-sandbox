@@ -3,9 +3,9 @@ import { RouterModule } from '@angular/router';
 
 import { AUTH_ROUTES } from './auth.routes';
 import { CallbackComponent } from './login/callback.component';
-import { NavigationService, LoginComponent} from './login/login.component';
-import { WindowNavigationService } from './login/window-navigation.service';
+import { LoginComponent} from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { NavigationService, WindowNavigationService } from './window-navigation.service';
 
 @NgModule({
   imports: [

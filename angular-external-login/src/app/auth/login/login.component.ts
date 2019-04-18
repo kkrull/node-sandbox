@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
-
-export abstract class NavigationService {
-  abstract changeLocationTo(url: URL): void;
-}
+import { NavigationService } from '../window-navigation.service';
 
 @Component({
   selector: 'app-login',

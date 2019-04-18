@@ -1,4 +1,6 @@
-import { NavigationService } from './login.component';
+export abstract class NavigationService {
+  abstract changeLocationTo(url: URL): void;
+}
 
 export class WindowNavigationService extends NavigationService {
   changeLocationTo(url: URL): void {

@@ -13,7 +13,9 @@ import { CognitoModule } from './plugins/cognito/cognito.module';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    CognitoModule.forRoot(environment.identityProvider),
+    CognitoModule.forRoot(environment.identityProvider, {
+      loginRoute: ['/auth', 'login']
+    }),
     HttpClientModule,
   ],
   declarations: [AppComponent],

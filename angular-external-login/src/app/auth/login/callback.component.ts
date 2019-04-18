@@ -26,8 +26,7 @@ export class CallbackComponent implements OnInit, OnDestroy {
 
     this.tokenSubscription = activatedRoute.fragment.pipe(
       map(fragment => this.parseTokens(fragment)),
-      tap(tokens => this.storeTokens(tokens)),
-      map(tokens => JSON.stringify(tokens, null, 2))
+      tap(tokens => this.storeTokens(tokens))
     ).subscribe();
   }
 

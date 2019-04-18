@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { take } from 'rxjs/operators';
 
 import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
@@ -14,18 +15,18 @@ export class LoginComponent implements OnInit {
               private navigationService: NavigationService) { }
 
   ngOnInit(): void {
-    this.authorizationUrlSnapshot()
+    this.authorizationUrlSnapshot(this.callbackUrl())
       .subscribe(url => this.navigationService.changeLocationTo(url));
   }
 
-  private authorizationUrlSnapshot() {
-    const loginComponentUrl = window.location.href;
-    console.log('url to /auth/login', loginComponentUrl);
+  private callbackUrl(): URL {
+    const currentHref = this.navigationService.currentUrl().href;
+    const routeToThisComponentIncludingQuery = /[/]auth[/]login.*$/;
+    const routeToCallback = '/auth/callback';
+    return new URL(currentHref.replace(routeToThisComponentIncludingQuery, routeToCallback));
+  }
 
-    const callbackHref = loginComponentUrl.replace(/[/]auth[/]login.*$/, '/auth/callback');
-    console.log('url to /auth/callback', callbackHref);
-
-    const callbackUrl = new URL(callbackHref);
+  private authorizationUrlSnapshot(callbackUrl: URL): Observable<URL> {
     return this.identityProviderService.authorizationUrl(callbackUrl)
       .pipe(take(1));
   }

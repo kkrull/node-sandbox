@@ -9,7 +9,7 @@ import { TokenStorageService } from '../../shared/services/interfaces/token-stor
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
-  constructor(private router: Router, private storage: TokenStorageService) { }
+  constructor(private storage: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
     this.removeStoredTokens();

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Observable';
 
 export abstract class OpenIdConnectService {
-  abstract authorizationUrl(): Observable<URL>;
+  abstract authorizationUrl(redirectUri: URL): Observable<URL>;
 }

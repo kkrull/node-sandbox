@@ -19,7 +19,14 @@ export class LoginComponent implements OnInit {
   }
 
   private authorizationUrlSnapshot() {
-    return this.identityProviderService.authorizationUrl()
+    const loginComponentUrl = window.location.href;
+    console.log('url to /auth/login', loginComponentUrl);
+
+    const callbackHref = loginComponentUrl.replace(/[/]auth[/]login.*$/, '/auth/callback');
+    console.log('url to /auth/callback', callbackHref);
+
+    const callbackUrl = new URL(callbackHref);
+    return this.identityProviderService.authorizationUrl(callbackUrl)
       .pipe(take(1));
   }
 }

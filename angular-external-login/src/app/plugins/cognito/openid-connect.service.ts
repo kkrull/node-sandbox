@@ -14,20 +14,18 @@ interface OpenIdConnectConfigResponse {
 
 @Injectable()
 export class CognitoOpenIdConnectService extends OpenIdConnectService {
-  private callbackUrl: URL;
   private config: IdentityProviderConfig;
 
   constructor(private http: HttpClient,
               @Inject(EnvironmentToken) private environment: Environment) {
     super();
-    this.callbackUrl = new URL('http://localhost:4200/auth/callback');
     this.config = environment.identityProvider;
   }
 
-  authorizationUrl(): Observable<URL> {
+  authorizationUrl(redirectUri: URL): Observable<URL> {
     return this.getDiscoveryDocument(this.configUrl()).pipe(
       map(idpConfig => idpConfig.authorization_endpoint),
-      map(authEndpointUrl => this.authorizeThisApp(authEndpointUrl)),
+      map(authEndpointUrl => this.authorizeThisApp(authEndpointUrl, redirectUri)),
     );
   }
 
@@ -46,10 +44,10 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
     ).pipe(map(response => response as OpenIdConnectConfigResponse));
   }
 
-  private authorizeThisApp(authorizationEndpoint: string): URL {
+  private authorizeThisApp(authorizationEndpoint: string, redirectUri: URL): URL {
     const authorizationUrl = new URL(authorizationEndpoint);
     authorizationUrl.searchParams.append('client_id', this.config.appClient.clientId);
-    authorizationUrl.searchParams.append('redirect_uri', this.callbackUrl.href);
+    authorizationUrl.searchParams.append('redirect_uri', redirectUri.href);
     authorizationUrl.searchParams.append('response_type', 'token');
     return authorizationUrl;
   }

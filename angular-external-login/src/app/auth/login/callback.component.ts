@@ -1,51 +1,23 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, tap } from 'rxjs/operators';
-import { Subscription } from 'rxjs/Subscription';
 
-import { TokenStorageService } from '../../shared/services/identity-provider-plugin-interfaces';
-
-interface Tokens {
-  accessToken: string;
-  expiresIn: string;
-  idToken: string;
-  type: string;
-}
+import { CallbackUrlTokenParser, Tokens, TokenStorageService } from '../../shared/services/identity-provider-plugin-interfaces';
 
 @Component({
   selector: 'app-login-callback',
   templateUrl: './callback.component.html',
   styleUrls: ['./callback.component.css']
 })
-export class CallbackComponent implements OnInit, OnDestroy {
-  private tokenSubscription: Subscription;
-
+export class CallbackComponent implements OnInit {
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
-              private storage: TokenStorageService) {
-
-    this.tokenSubscription = activatedRoute.fragment.pipe(
-      map(fragment => this.parseTokens(fragment)),
-      tap(tokens => this.storeTokens(tokens))
-    ).subscribe();
-  }
+              private tokenParser: CallbackUrlTokenParser,
+              private storage: TokenStorageService) { }
 
   ngOnInit(): void {
+    const tokens = this.tokenParser.parseTokens(this.activatedRoute.snapshot);
+    this.storeTokens(tokens);
     this.routeToGuardedPage();
-  }
-
-  ngOnDestroy(): void {
-    this.tokenSubscription.unsubscribe();
-  }
-
-  private parseTokens(fragmentOrQueryString: string) {
-    const params = new URLSearchParams(fragmentOrQueryString);
-    return {
-      accessToken: params.get('access_token'),
-      expiresIn: params.get('expires_in'),
-      idToken: params.get('id_token'),
-      type: params.get('token_type'),
-    };
   }
 
   private storeTokens(tokens: Tokens) {

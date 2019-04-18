@@ -1,13 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { OpenIdConnectService, TokenStorageService } from '../../shared/services/identity-provider-plugin-interfaces';
+import {
+  CallbackUrlTokenParser,
+  OpenIdConnectService,
+  TokenStorageService
+} from '../../shared/services/identity-provider-plugin-interfaces';
 
-import { AuthGuard } from '../../auth/auth-guard';
 import { CognitoOpenIdConnectService } from './openid-connect.service';
 import { CognitoTokenStorageService } from './token-storage-service';
 import { CognitoConfig, CognitoConfigToken } from './tokens';
+import { UrlFragmentTokenParser } from './url-fragment-token-parser.service';
 
 export function makeOpenIdConnectService(idpConfig: CognitoConfig, http: HttpClient): OpenIdConnectService {
   return new CognitoOpenIdConnectService(idpConfig, http);
@@ -19,6 +22,7 @@ export class CognitoServiceModule {
     return {
       ngModule: CognitoServiceModule,
       providers: [
+        { provide: CallbackUrlTokenParser, useClass: UrlFragmentTokenParser },
         { provide: CognitoConfigToken, useValue: idpConfig },
         {
           provide: OpenIdConnectService,

@@ -8,5 +8,3 @@ export interface CognitoConfig {
 }
 
 export const CognitoConfigToken = new InjectionToken<CognitoConfig>('CognitoConfig');
-
-export const LoginRouteToken = new InjectionToken<any[]>('LoginRoute');

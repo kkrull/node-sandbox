@@ -13,7 +13,7 @@ import { ReferenceComponent } from './reference/reference.component';
   imports: [
     AuthModule,
     CommonModule,
-    CognitoModule,
+    CognitoModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES)
   ],
   declarations: [

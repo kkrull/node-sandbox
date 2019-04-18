@@ -3,8 +3,9 @@ import { RouterModule } from '@angular/router';
 
 import { AUTH_ROUTES } from './auth.routes';
 import { CallbackComponent } from './login/callback.component';
-import { LocationService, LoginComponent, WindowLocationService } from './login/login.component';
+import { NavigationService, LoginComponent} from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { WindowNavigationService } from './login/window-navigation.service';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { LogoutComponent } from './logout/logout.component';
     LogoutComponent
   ],
   providers: [
-    { provide: LocationService, useClass: WindowLocationService }
+    { provide: NavigationService, useClass: WindowNavigationService }
   ],
   exports: [RouterModule]
 })

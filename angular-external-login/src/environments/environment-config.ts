@@ -1,5 +1,3 @@
-import { InjectionToken } from '@angular/core';
-
 export interface ImplicitAppClientConfig {
   clientId: string;
 }
@@ -13,5 +11,3 @@ export interface Environment {
   production: boolean;
   identityProvider: IdentityProviderConfig;
 }
-
-export const EnvironmentToken: InjectionToken<Environment> = new InjectionToken('Environment');

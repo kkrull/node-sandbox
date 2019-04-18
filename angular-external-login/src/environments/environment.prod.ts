@@ -1,4 +1,4 @@
-import { Environment } from './environment.service';
+import { Environment } from './environment-config';
 
 export const environment: Environment = {
   production: true,

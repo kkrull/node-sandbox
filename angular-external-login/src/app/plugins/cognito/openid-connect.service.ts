@@ -32,7 +32,7 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
     return configUrl;
   }
 
-  private getDiscoveryDocument(url: URL) {
+  private getDiscoveryDocument(url: URL): Observable<OpenIdConnectConfigResponse> {
     return this.http.get(
       url.href, {
         observe: 'body',

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { take } from 'rxjs/operators';
 
 import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
-import { NavigationService } from '../window-navigation.service';
+import { NavigationService } from '../services/window-navigation.service';
 
 @Component({
   selector: 'app-login',

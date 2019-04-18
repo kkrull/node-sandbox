@@ -5,7 +5,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
-import { Environment, EnvironmentToken, IdentityProviderConfig } from '../../../environments/environment.service';
+import { Environment, EnvironmentToken, IdentityProviderConfig, ImplicitAppClientConfig } from '../../../environments/environment.service';
 import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
 
 interface OpenIdConnectConfigResponse {
@@ -14,12 +14,16 @@ interface OpenIdConnectConfigResponse {
 
 @Injectable()
 export class CognitoOpenIdConnectService extends OpenIdConnectService {
-  private config: IdentityProviderConfig;
+  private idpServerUrl: URL;
+  private clientId: string;
 
   constructor(private http: HttpClient,
               @Inject(EnvironmentToken) private environment: Environment) {
     super();
-    this.config = environment.identityProvider;
+
+    const config: IdentityProviderConfig = environment.identityProvider;
+    this.clientId = config.appClient.clientId;
+    this.idpServerUrl = config.baseUrl;
   }
 
   authorizationUrl(redirectUri: URL): Observable<URL> {
@@ -30,14 +34,14 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
   }
 
   private configUrl(): URL {
-    const configUrl = new URL(this.config.baseUrl.href);
+    const configUrl = new URL(this.idpServerUrl.href);
     configUrl.pathname = Location.joinWithSlash(configUrl.pathname, '.well-known/openid-configuration');
     return configUrl;
   }
 
-  private getDiscoveryDocument(configUrl: URL) {
+  private getDiscoveryDocument(url: URL) {
     return this.http.get(
-      configUrl.href, {
+      url.href, {
         observe: 'body',
         responseType: 'json'
       }
@@ -46,7 +50,7 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
 
   private authorizeThisApp(authorizationEndpoint: string, redirectUri: URL): URL {
     const authorizationUrl = new URL(authorizationEndpoint);
-    authorizationUrl.searchParams.append('client_id', this.config.appClient.clientId);
+    authorizationUrl.searchParams.append('client_id', this.clientId);
     authorizationUrl.searchParams.append('redirect_uri', redirectUri.href);
     authorizationUrl.searchParams.append('response_type', 'token');
     return authorizationUrl;

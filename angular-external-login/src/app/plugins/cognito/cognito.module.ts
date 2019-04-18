@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
+import { environment } from '../../../environments/environment';
 import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
 import { TokenStorageService } from '../../shared/services/interfaces/token-storage.service';
 
@@ -12,9 +14,19 @@ import { CognitoTokenStorageService } from './token-storage-service';
   providers: [
     AuthGuard,
     { provide: LoginRouteToken, useValue: ['/auth', 'login'] }, // TODO KDK: This is why CognitoModule and AuthModule should be the same
-    { provide: OpenIdConnectService, useClass: CognitoOpenIdConnectService },
+    {
+      provide: OpenIdConnectService,
+      deps: [HttpClient],
+      useFactory: (http: HttpClient) => {
+        return new CognitoOpenIdConnectService(
+          http,
+          environment.identityProvider.baseUrl,
+          environment.identityProvider.appClient.clientId
+        );
+      }
+    },
     { provide: TokenStorageService, useClass: CognitoTokenStorageService }
   ],
   exports: []
 })
-export class CognitoModule { }
+export class CognitoModule {}

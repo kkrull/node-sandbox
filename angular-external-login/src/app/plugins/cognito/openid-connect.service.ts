@@ -1,11 +1,10 @@
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
-import { Environment, EnvironmentToken, IdentityProviderConfig, ImplicitAppClientConfig } from '../../../environments/environment.service';
 import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
 
 interface OpenIdConnectConfigResponse {
@@ -14,16 +13,10 @@ interface OpenIdConnectConfigResponse {
 
 @Injectable()
 export class CognitoOpenIdConnectService extends OpenIdConnectService {
-  private idpServerUrl: URL;
-  private clientId: string;
-
   constructor(private http: HttpClient,
-              @Inject(EnvironmentToken) private environment: Environment) {
+              private baseUrl: URL,
+              private clientId: string) {
     super();
-
-    const config: IdentityProviderConfig = environment.identityProvider;
-    this.clientId = config.appClient.clientId;
-    this.idpServerUrl = config.baseUrl;
   }
 
   authorizationUrl(redirectUri: URL): Observable<URL> {
@@ -34,7 +27,7 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
   }
 
   private configUrl(): URL {
-    const configUrl = new URL(this.idpServerUrl.href);
+    const configUrl = new URL(this.baseUrl.href);
     configUrl.pathname = Location.joinWithSlash(configUrl.pathname, '.well-known/openid-configuration');
     return configUrl;
   }

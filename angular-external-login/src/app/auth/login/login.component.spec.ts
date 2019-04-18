@@ -1,14 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { empty } from 'rxjs/observable/empty';
 
-import { LoginComponent } from './login.component';
+import { LocationService, LoginComponent } from './login.component';
+import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let openIdService: jasmine.SpyObj<OpenIdConnectService>;
 
   beforeEach(async(() => {
+    openIdService = jasmine.createSpyObj('OpenIdConnectService', ['authorizationUrl']);
+    openIdService.authorizationUrl.and.returnValue(empty());
+
     TestBed.configureTestingModule({
-      declarations: [LoginComponent]
+      declarations: [LoginComponent],
+      providers: [
+        { provide: LocationService, useValue: jasmine.createSpyObj('LocationService', ['changeLocationTo']) },
+        { provide: OpenIdConnectService, useValue: openIdService }
+      ]
     }).compileComponents();
   }));
 

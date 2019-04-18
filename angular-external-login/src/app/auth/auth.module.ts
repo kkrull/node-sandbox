@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AUTH_ROUTES } from './auth.routes';
-import { ChangeToExternalSignInUrl } from './change-to-sign-in-url.resolve';
 import { CallbackComponent } from './login/callback.component';
-import { LoginComponent } from './login/login.component';
+import { LocationService, LoginComponent, WindowLocationService } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
@@ -17,7 +16,7 @@ import { LogoutComponent } from './logout/logout.component';
     LogoutComponent
   ],
   providers: [
-    ChangeToExternalSignInUrl
+    { provide: LocationService, useClass: WindowLocationService }
   ],
   exports: [RouterModule]
 })

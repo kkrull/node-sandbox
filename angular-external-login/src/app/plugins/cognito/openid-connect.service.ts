@@ -5,8 +5,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
-import { Environment, IdentityProviderConfig } from '../../../environments/environment.service';
-import { EnvironmentToken } from '../../../environments/environment.service';
+import { Environment, EnvironmentToken, IdentityProviderConfig } from '../../../environments/environment.service';
 import { OpenIdConnectService } from '../../shared/services/interfaces/openid-connect.service';
 
 interface OpenIdConnectConfigResponse {
@@ -15,11 +14,13 @@ interface OpenIdConnectConfigResponse {
 
 @Injectable()
 export class CognitoOpenIdConnectService extends OpenIdConnectService {
+  private callbackUrl: URL;
   private config: IdentityProviderConfig;
 
   constructor(private http: HttpClient,
               @Inject(EnvironmentToken) private environment: Environment) {
     super();
+    this.callbackUrl = new URL('http://localhost:4200/auth/callback');
     this.config = environment.identityProvider;
   }
 
@@ -37,18 +38,18 @@ export class CognitoOpenIdConnectService extends OpenIdConnectService {
   }
 
   private getDiscoveryDocument(configUrl: URL) {
-    return this.http.get(configUrl.href, {
-      observe: 'body',
-      responseType: 'json'
-    }).pipe(
-      map(response => response as OpenIdConnectConfigResponse)
-    );
+    return this.http.get(
+      configUrl.href, {
+        observe: 'body',
+        responseType: 'json'
+      }
+    ).pipe(map(response => response as OpenIdConnectConfigResponse));
   }
 
   private authorizeThisApp(authorizationEndpoint: string): URL {
     const authorizationUrl = new URL(authorizationEndpoint);
     authorizationUrl.searchParams.append('client_id', this.config.appClient.clientId);
-    authorizationUrl.searchParams.append('redirect_uri', 'http://localhost:4200/auth/callback');
+    authorizationUrl.searchParams.append('redirect_uri', this.callbackUrl.href);
     authorizationUrl.searchParams.append('response_type', 'token');
     return authorizationUrl;
   }

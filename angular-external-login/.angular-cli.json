@@ -1,0 +1,62 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "apps": [
+    {
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "environments": {
+        "cognito": "environments/environment.cognito.ts",
+        "dev": "environments/environment.ts",
+        "identity-server-demo": "environments/environment.identity-server-demo.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "environmentSource": "environments/environment.ts",
+      "index": "index.html",
+      "main": "main.ts",
+      "outDir": "dist",
+      "polyfills": "polyfills.ts",
+      "prefix": "app",
+      "root": "src",
+      "test": "test.ts",
+      "testTsconfig": "tsconfig.spec.json",
+      "tsconfig": "tsconfig.app.json",
+      "scripts": [],
+      "styles": [
+        "styles.css"
+      ]
+    }
+  ],
+  "defaults": {
+    "component": {},
+    "styleExt": "css"
+  },
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "project": {
+    "name": "angular-external-login"
+  },
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  }
+}

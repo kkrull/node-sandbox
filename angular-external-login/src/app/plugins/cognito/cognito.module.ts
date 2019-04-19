@@ -10,7 +10,7 @@ import {
 import { CognitoOpenIdConnectService } from './openid-connect.service';
 import { CognitoTokenStorageService } from './token-storage-service';
 import { CognitoConfig, CognitoConfigToken } from './tokens';
-import { UrlFragmentTokenParser } from './url-fragment-token-parser.service';
+import { UrlFragmentTokenParser } from './token-parser.service';
 
 export function makeOpenIdConnectService(idpConfig: CognitoConfig, http: HttpClient): OpenIdConnectService {
   return new CognitoOpenIdConnectService(idpConfig, http);

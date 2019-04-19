@@ -9,6 +9,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start:cognito": "ng serve --environment=cognito",
+    "start:identity-server-demo": "ng serve --environment=identity-server-demo",
     "test": "ng test --watch=false"
   },
   "private": true,

@@ -10,7 +10,7 @@ import {
 import { IdentityServerOpenIdConnectService } from './openid-connect.service';
 import { IdentityServerTokenStorageService } from './token-storage-service';
 import { IdentityServerConfig, IdentityServerConfigToken } from './tokens';
-import { QueryStringTokenParser } from './token-parser.service';
+import { UrlFragmentTokenParser } from './token-parser.service';
 
 export function makeOpenIdConnectService(idpConfig: IdentityServerConfig, http: HttpClient): OpenIdConnectService {
   return new IdentityServerOpenIdConnectService(idpConfig, http);
@@ -22,7 +22,7 @@ export class IdentityServerServiceModule {
     return {
       ngModule: IdentityServerServiceModule,
       providers: [
-        { provide: CallbackUrlTokenParser, useClass: QueryStringTokenParser },
+        { provide: CallbackUrlTokenParser, useClass: UrlFragmentTokenParser },
         { provide: IdentityServerConfigToken, useValue: idpConfig },
         {
           provide: OpenIdConnectService,

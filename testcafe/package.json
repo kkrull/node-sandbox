@@ -1,0 +1,14 @@
+{
+  "name": "testcafe-tutorial",
+  "version": "0.0.1",
+  "description": "Try out testcafe",
+  "main": "index.js",
+  "scripts": {
+    "test": "testcafe chrome test1.js"
+  },
+  "author": "Kyle Krull",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "testcafe": "^1.4.3"
+  }
+}

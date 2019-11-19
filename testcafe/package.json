@@ -1,13 +1,14 @@
 {
-  "name": "testcafe-tutorial",
-  "version": "0.0.1",
-  "description": "Try out testcafe",
-  "main": "index.js",
-  "scripts": {
-    "test": "testcafe chrome test1.js"
-  },
   "author": "Kyle Krull",
+  "description": "Try out testcafe",
   "license": "UNLICENSED",
+  "main": "index.js",
+  "name": "testcafe-tutorial",
+  "scripts": {
+    "test": "testcafe chrome e2e/tutorial.e2e.js",
+    "test:watch": "testcafe --live chrome e2e/tutorial.e2e.js"
+  },
+  "version": "0.0.1",
   "devDependencies": {
     "testcafe": "^1.4.3"
   }

@@ -1,7 +1,14 @@
-import { Selector } from 'testcafe';
+import { RequestMock, Selector } from 'testcafe';
+
+const requestHook = RequestMock()
+  .onRequestTo(new RegExp('https://httpbin.org/get'))
+  .respond({ answer: 42 }, 200, {
+    'access-control-allow-origin': '*'
+  });
 
 fixture('REST Test')
-  .page('https://resttesttest.com/');
+  .page('https://resttesttest.com/')
+  .requestHooks(requestHook);
 
 test('Makes an async request', async t => {
   const urlInput = Selector('#urlvalue');

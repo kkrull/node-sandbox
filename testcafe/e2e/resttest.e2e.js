@@ -1,10 +1,21 @@
-import { RequestMock, Selector } from 'testcafe';
+import { RequestHook, Selector } from 'testcafe';
 
-const requestHook = RequestMock()
-  .onRequestTo(new RegExp('https://httpbin.org/get'))
-  .respond({ answer: 42 }, 200, {
-    'access-control-allow-origin': '*'
-  });
+class CustomHeaderRequestHook extends RequestHook {
+  constructor(addHeaderName, addHeaderValue, filterRules, options) {
+    super(filterRules, options);
+    this.addHeaderName = addHeaderName;
+    this.addHeaderValue = addHeaderValue;
+  }
+
+  async onRequest(event) {
+    console.log('[CustomHeaderRequestHook]', event.requestOptions.url);
+    event.requestOptions.headers[this.addHeaderName] = this.addHeaderValue;
+  }
+
+  async onResponse(event) { }
+}
+
+const requestHook = new CustomHeaderRequestHook('X-Custom-Header', 'Swordfish', ['https://httpbin.org/get']);
 
 fixture('REST Test')
   .page('https://resttesttest.com/')

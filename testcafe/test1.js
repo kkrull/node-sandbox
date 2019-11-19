@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
 
-fixture `Getting Started`
-  .page `http://devexpress.github.io/testcafe/example`;
+fixture('Tutorial')
+  .page('http://devexpress.github.io/testcafe/example');
 
-test('My first test', async t => {
+test('Opens a page', async t => {
   // Test code
 });

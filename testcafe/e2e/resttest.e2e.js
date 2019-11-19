@@ -4,15 +4,17 @@ fixture('REST Test')
   .page('https://resttesttest.com/');
 
 test('Makes an async request', async t => {
+  const urlInput = Selector('#urlvalue');
+  const submitButton = Selector('#submitajax');
   await t
-    .typeText('#urlvalue', 'https://httpbin.org/get', { replace: true })
-    .click('#submitajax');
+    .typeText(urlInput, 'https://httpbin.org/get', { replace: true })
+    .click(submitButton);
 
-  const status = Selector('#statuspre');
+  const responseStatus = Selector('#statuspre');
   await t
-    .expect(status.textContent).contains('HTTP')
-    .expect(status.textContent).contains('200 OK');
+    .expect(responseStatus.textContent).contains('HTTP')
+    .expect(responseStatus.textContent).contains('200 OK');
 
-  const finalStatus = await status.textContent;
-  console.log('Final status', finalStatus);
+  const statusText = await responseStatus.textContent;
+  console.log('Final status', statusText);
 });

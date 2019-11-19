@@ -1,21 +1,9 @@
-import { RequestHook, Selector } from 'testcafe';
+import { Selector } from 'testcafe';
+import CustomHeaderRequestHook from './custom-header-request-hook';
 
-class CustomHeaderRequestHook extends RequestHook {
-  constructor(addHeaderName, addHeaderValue, filterRules, options) {
-    super(filterRules, options);
-    this.addHeaderName = addHeaderName;
-    this.addHeaderValue = addHeaderValue;
-  }
-
-  async onRequest(event) {
-    console.log('[CustomHeaderRequestHook]', event.requestOptions.url);
-    event.requestOptions.headers[this.addHeaderName] = this.addHeaderValue;
-  }
-
-  async onResponse(event) { }
-}
-
-const requestHook = new CustomHeaderRequestHook('X-Custom-Header', 'Swordfish', ['https://httpbin.org/get']);
+const requestHook = new CustomHeaderRequestHook(['https://httpbin.org/get'], null, {
+  'X-Custom-Header': 'Swordfish',
+});
 
 fixture('REST Test')
   .page('https://resttesttest.com/')

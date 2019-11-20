@@ -6,7 +6,8 @@
   "name": "testcafe-tutorial",
   "scripts": {
     "test": "testcafe chrome e2e/*.e2e.js",
-    "test:watch": "testcafe --live chrome e2e/*.e2e.js"
+    "test:watch": "testcafe --live chrome e2e/*.e2e.js",
+    "test:wip": "testcafe --test-meta wip=true chrome e2e/*.e2e.js"
   },
   "version": "0.0.1",
   "devDependencies": {

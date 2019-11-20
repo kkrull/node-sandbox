@@ -7,7 +7,6 @@ export default class CustomHeaderRequestHook extends RequestHook {
   }
 
   async onRequest(event) {
-    console.log('[CustomHeaderRequestHook]', event.requestOptions.url);
     Object.keys(this.headers).forEach(header => {
       event.requestOptions.headers[header] = this.headers[header];
     });

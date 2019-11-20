@@ -1,5 +1,5 @@
-import { Selector } from 'testcafe';
 import CustomHeaderRequestHook from './custom-header-request-hook';
+import RestTestPage from './resttest.page';
 
 const requestHook = new CustomHeaderRequestHook(['https://httpbin.org/get'], null, {
   'X-Custom-Header': 'Swordfish',
@@ -11,17 +11,14 @@ fixture('REST Test')
 
 test.meta({ wip: 'true' })
   ('Makes an async request', async t => {
-    const urlInput = Selector('#urlvalue');
-    const submitButton = Selector('#submitajax');
-    await t
-      .typeText(urlInput, 'https://httpbin.org/get', { replace: true })
-      .click(submitButton);
+    const restPage = new RestTestPage();
+    await restPage.typeUrl('https://httpbin.org/get');
+    await restPage.clickSubmit();
 
-    const responseStatus = Selector('#statuspre');
     await t
-      .expect(responseStatus.textContent).contains('HTTP')
-      .expect(responseStatus.textContent).contains('200 OK');
+      .expect(restPage.responseStatus.textContent).contains('HTTP')
+      .expect(restPage.responseStatus.textContent).contains('200 OK');
 
-    const statusText = await responseStatus.textContent;
+    const statusText = await restPage.responseStatusText;
     console.log('Final status', statusText);
   });

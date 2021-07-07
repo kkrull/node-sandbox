@@ -1,6 +1,6 @@
-# Terraform for AWS Lambda
+# Terraform for AWS Anything
 
-Trying out terraform to deploy a Lambda function on AWS.
+Trying out terraform to deploy anything on AWS.
 
 
 ## AWS CLI

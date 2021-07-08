@@ -20,3 +20,14 @@ Installing via homebrew doesn't look appealing, because it makes you install
 `python 3.9` via homebrew as well and then that just gets messy.  So the [MacOS
 package](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html#cliv2-mac-install-confirm)
 with an embedded pyton is the way to go.
+
+
+## Terraform backend
+
+I had some trouble setting up the s3 backend, at first.  It may have been due to
+either or both of these:
+
+* The bucket name I picked was not unique, globally, among all AWS accounts.  I
+  changed it to another name, after trying (and failing) to create it manually
+  in the AWS Console.
+* The bucket didn't exist yet.  I created it manually, in the AWS Console.

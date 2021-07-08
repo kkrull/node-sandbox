@@ -16,7 +16,10 @@ provider "aws" {
 
 resource "aws_sns_topic" "lambda-input" {
   name = "lambda-input-events"
-  display_name = "[terraform-aws 01] Input events that initiate the workflow."
+  display_name = "[terraform-aws 01] Input events that initiate the workflow"
 }
 
-#TODO KDK: Set up default VPC and subnet for use on just about everything?
+output "lambda-input-arn" {
+  description = "ARN to the SNS topic that initiates the workflow"
+  value = aws_sns_topic.lambda-input.arn
+}

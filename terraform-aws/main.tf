@@ -13,3 +13,10 @@ provider "aws" {
   profile = "default"
   region  = "us-east-1"
 }
+
+resource "aws_sns_topic" "lambda-input" {
+  name = "lambda-input-events"
+  display_name = "[terraform-aws 01] Input events that initiate the workflow."
+}
+
+#TODO KDK: Set up default VPC and subnet for use on just about everything?

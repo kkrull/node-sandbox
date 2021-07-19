@@ -1,0 +1,23 @@
+{
+  "author": "Kyle Krull",
+  "description": "Listens for events from the SalesForce Event Bus",
+  "license": "MIT",
+  "name": "salesforce-events",
+  "scripts": {
+    "env:init": "cp .env.dev.template .env.dev",
+    "format": "prettier -w *.js",
+    "subscribe-change-event": "NODE_ENV=dev node subscribe-change-event.js",
+    "subscribe-change-event:debug": "NODE_ENV=dev NODE_DEBUG=http,https node subscribe-change-event.js",
+    "subscribe-platform-event": "NODE_ENV=dev node subscribe-platform-event.js",
+    "test": "echo 'Error: no test specified' && exit 1"
+  },
+  "version": "0.0.1",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "nforce": "^1.12.2",
+    "sforcejs": "^1.0.5"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2"
+  }
+}

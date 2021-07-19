@@ -20,7 +20,9 @@ Globally:
 In this repository:
 
 1. `npm install`
-1. `npm run ...` (see below)
+2. `npm run env:init`, then edit `.envrc` with the values configured in
+   SalesForce (see below)
+3. `npm run ...` (see below)
 
 
 ## What it can do

@@ -27,6 +27,63 @@ In this repository:
 
 ## What it can do
 
+### Publish Platform Events with `nforce`
+
+TL;DR - _Create an sObject of the event type and use the connection to insert it
+into SalesForce._
+
+Use the REST API to [POST a
+message](https://trailhead.salesforce.com/en/content/learn/modules/platform_events_basics/platform_events_define_publish)
+with the name and value of each field in the event object to event's SObject
+path (`/services/data/v45.0/sobjects/ExpenseUpdatedPlatformEvent__e/`, in this
+example).  An `nforce` connection [handles the
+insert](https://github.com/kevinohara80/nforce#insertopts-callback).
+
+The publication code therefore looks like this::
+
+```javascript
+const factory = NForceFactory.forEnvironment(process.env.NODE_ENV);
+const org = factory.createConnection('http://localhost:3000/oauth/_callback');
+org
+  .authenticate(factory.authenticationOptions())
+  .then((oauth) => {
+    const acc = nforce.createSObject('ExpenseUpdatedPlatformEvent__e');
+    acc.set('ExpenseId__c', 'EXP-00002');
+    return org.insert({ sobject: acc, oauth });
+  })
+  .then((resp) => console.log('Inserted event:', resp))
+  .catch((error) => console.log('Insert failed:', error));
+```
+
+A response to a sucessful insert looks something like this:
+
+```shell
+$ npm run publish-platform-event EXP-00005
+
+> salesforce-events@0.0.1 publish-platform-event
+> NODE_ENV=dev node publish-platform-event.js
+
+Loading environment settings: ...
+Creating connection for client: ...
+Inserted event: { id: 'e00xx0000000001AAA', success: true, errors: [] }
+```
+
+Subscribers receive an event that looks something like this:
+
+```json
+{
+  "schema": "oCWawJ8BR1tkxCq6ZxQyQw",
+  "payload": {
+    "ExpenseId__c": "EXP-00005", /* Set this field explicitly */
+    "CreatedById": "0055e000005DtchAAC", /* Set automatically by SalesForce or nforce */
+    "CreatedDate": "2021-07-20T19:19:45.153Z" /* Set automatically by SalesForce or nforce */
+  },
+  "event": {
+    "replayId": 3953588
+  }
+}
+```
+
 ### Subscribe to Platform Events with `nforce`
 
 TL;DR - _Create a custom process in Process Builder that creates (and

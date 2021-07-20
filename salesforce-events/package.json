@@ -6,6 +6,7 @@
   "scripts": {
     "env:init": "cp .env.dev.template .env.dev",
     "format": "prettier -w *.js",
+    "publish-platform-event": "NODE_ENV=dev node publish-platform-event.js",
     "subscribe-change-event": "NODE_ENV=dev node subscribe-change-event.js",
     "subscribe-change-event:debug": "NODE_ENV=dev NODE_DEBUG=http,https node subscribe-change-event.js",
     "subscribe-platform-event": "NODE_ENV=dev node subscribe-platform-event.js",

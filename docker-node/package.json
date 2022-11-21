@@ -1,0 +1,12 @@
+{
+  "name": "docker-node",
+  "packageManager": "yarn@3.2.4",
+  "scripts": {
+    "docker:build": "docker build -t node-test:latest .",
+    "docker:prune-images": "docker image prune",
+    "docker:files": "docker run --rm node-test:latest find . -type f | sort",
+    "docker:run": "docker run --name node-test-container --rm node-test:latest",
+    "docker:shell": "docker run -it --name node-test-container --rm node-test:latest /bin/bash"
+  },
+  "version": "0.0.1"
+}

@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "json-server": "^0.17.1"
+  },
+  "name": "docker-json-server",
+  "packageManager": "yarn@3.2.4",
+  "scripts": {
+    "docker:build": "docker build -t json-data-server:latest .",
+    "docker:files": "docker run --rm json-data-server:latest find . -type f | sort",
+    "docker:prune-images": "docker image prune",
+    "docker:run": "docker run --name json-data-server-container --rm json-data-server:latest",
+    "docker:shell": "docker run -it --name json-data-server-container --rm json-data-server:latest /bin/bash",
+    "docker:start": "docker run -d --name json-server -p3000:3000 --rm json-data-server:latest",
+    "start": "json-server --host=0.0.0.0 data/json-server/db-some.json"
+  },
+  "version": "0.0.1"
+}

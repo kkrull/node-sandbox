@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@types/node": "18.15.5",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "eslint": "8.36.0",
+    "eslint-config-next": "13.2.4",
+    "googleapis": "^114.0.0",
+    "next": "13.2.4",
+    "next-auth": "^4.20.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.0.2"
+  },
+  "name": "nextjs-13",
+  "notes": {
+    "TODO_KDK": "Try just using @googleapis/admin"
+  },
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "version": "0.1.0"
+}

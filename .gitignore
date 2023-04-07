@@ -1,10 +1,1 @@
-bin/
-build/
-lib/
-node_modules/
-npm-debug.log
-.idea/
-.DS_Store
-*.png
-*.wav
-*.swp
+.vscode/

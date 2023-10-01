@@ -1,11 +1,11 @@
 {
-  "name": "cucumberjs-8",
-  "version": "0.0.1",
+  "author": "Kyle Krull",
   "description": "Try out Cucumber.js 8 with TypeScript.",
+  "license": "MIT",
   "main": "index.js",
+  "name": "cucumberjs-8",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Kyle Krull",
-  "license": "MIT"
+  "version": "0.0.1"
 }

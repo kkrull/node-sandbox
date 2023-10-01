@@ -1,7 +1,7 @@
 class Greeter {
   sayHello() {
-    return 'Hello';
+    return "Hello";
   }
 }
 
-module.exports = { Greeter }
+module.exports = { Greeter };

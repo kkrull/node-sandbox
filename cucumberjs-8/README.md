@@ -2,7 +2,6 @@
 
 Try out Cucumber.js 8 with TypeScript.
 
-
 ## Run it
 
 ```shell
@@ -12,10 +11,8 @@ npx cucumber-js #alternative
 
 ## Try out
 
-- Format it with prettier
 - [NPM page](https://www.npmjs.com/package/@cucumber/cucumber)
 - [Cucumber.js with TypeScript](https://www.elliotdenolf.com/blog/cucumberjs-with-typescript)
-
 
 ## Intended Use
 
@@ -38,10 +35,10 @@ Feature: Convert EZDrummer 2 track to General MIDI
 ### General MIDI Percussion key map
 
 > For MIDI Channel 10, each MIDI KEY number ("NOTE#") corresponds to a
-different drum sound, as shown below. While many current instruments
-also have additional sounds above or below the range show here, and
-may even have additional "kits" with variations of these sounds, only
-these sounds are supported by General MIDI Level 1 devices.
+> different drum sound, as shown below. While many current instruments
+> also have additional sounds above or below the range show here, and
+> may even have additional "kits" with variations of these sounds, only
+> these sounds are supported by General MIDI Level 1 devices.
 
 ```
 Key# Note Drum Sound        Key# Note Drum Sound
@@ -72,7 +69,6 @@ Key# Note Drum Sound        Key# Note Drum Sound
 ```
 
 Source: <https://musescore.org/sites/musescore.org/files/General%20MIDI%20Standard%20Percussion%20Set%20Key%20Map.pdf>
-
 
 ## Notes
 

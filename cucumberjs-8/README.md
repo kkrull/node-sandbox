@@ -2,6 +2,13 @@
 
 Try out Cucumber.js 8 with TypeScript.
 
+## Run it
+
+```shell
+npm test
+npx cucumber-js #alternative
+```
+
 ## Try out
 
 - [Installation](https://github.com/cucumber/cucumber-js/blob/8.x/docs/installation.md)

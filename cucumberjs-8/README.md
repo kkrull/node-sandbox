@@ -2,6 +2,7 @@
 
 Try out Cucumber.js 8 with TypeScript.
 
+
 ## Run it
 
 ```shell
@@ -11,9 +12,10 @@ npx cucumber-js #alternative
 
 ## Try out
 
-- [Installation](https://github.com/cucumber/cucumber-js/blob/8.x/docs/installation.md)
+- Format it with prettier
 - [NPM page](https://www.npmjs.com/package/@cucumber/cucumber)
 - [Cucumber.js with TypeScript](https://www.elliotdenolf.com/blog/cucumberjs-with-typescript)
+
 
 ## Intended Use
 
@@ -70,6 +72,7 @@ Key# Note Drum Sound        Key# Note Drum Sound
 ```
 
 Source: <https://musescore.org/sites/musescore.org/files/General%20MIDI%20Standard%20Percussion%20Set%20Key%20Map.pdf>
+
 
 ## Notes
 

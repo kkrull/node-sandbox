@@ -1,5 +1,8 @@
 {
   "author": "Kyle Krull",
+  "dependencies": {
+    "@cucumber/cucumber": "^9.5.1"
+  },
   "description": "Try out Cucumber.js 8 with TypeScript.",
   "license": "MIT",
   "main": "index.js",

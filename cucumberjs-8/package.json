@@ -5,6 +5,7 @@
   },
   "description": "Try out Cucumber.js 8 with TypeScript.",
   "devDependencies": {
+    "@cucumber/pretty-formatter": "^1.0.0",
     "prettier": "3.0.3"
   },
   "license": "MIT",
@@ -12,7 +13,7 @@
   "name": "cucumberjs-8",
   "scripts": {
     "format": "prettier --write .",
-    "test": "cucumber-js"
+    "test": "cucumber-js --format @cucumber/pretty-formatter"
   },
   "version": "0.0.1"
 }

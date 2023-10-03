@@ -12,7 +12,7 @@
   "name": "cucumberjs-8",
   "scripts": {
     "format": "prettier --write .",
-    "test": "cucumber-js --format @cucumber/pretty-formatter"
+    "test": "cucumber-js"
   },
   "version": "0.0.1"
 }

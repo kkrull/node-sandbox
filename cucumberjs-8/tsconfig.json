@@ -1,4 +1,5 @@
 //https://aka.ms/tsconfig
+//TODO KDK: Try one tsconfig with paths
 {
   "compilerOptions": {
     "esModuleInterop": true,

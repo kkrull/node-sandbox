@@ -30,6 +30,9 @@ Feature: Convert EZDrummer 2 track to General MIDI
   And non-standard notes should be changed to their equivalent in General MIDI
 ```
 
+Start in the middle (domain model) and test outwards (UI), via a different driver.
+Push scenarios down to unit tests and extract libraries for stable parts.
+
 ## Reference
 
 ### General MIDI Percussion key map

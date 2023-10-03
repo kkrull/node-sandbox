@@ -4,6 +4,9 @@
     "@cucumber/cucumber": "^9.5.1"
   },
   "description": "Try out Cucumber.js 8 with TypeScript.",
+  "devDependencies": {
+    "prettier": "3.0.3"
+  },
   "license": "MIT",
   "main": "index.js",
   "name": "cucumberjs-8",
@@ -11,8 +14,5 @@
     "format": "prettier --write .",
     "test": "cucumber-js"
   },
-  "version": "0.0.1",
-  "devDependencies": {
-    "prettier": "3.0.3"
-  }
+  "version": "0.0.1"
 }

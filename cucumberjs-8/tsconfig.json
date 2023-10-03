@@ -1,17 +1,26 @@
 //https://aka.ms/tsconfig
 {
   "compilerOptions": {
-    // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
-    // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
-    // "rootDir": "./",                                  /* Specify the root folder within your source files. */
-    // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
+    "outDir": "./dist",
     "skipLibCheck": true,
     "strict": true,
-    "target": "es2016"
-    // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
-    // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */
-  }
+    "target": "es2016",
+    "types": []
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  //Avoid compiling projects twice by only compiling from the project file
+  "files": [],
+  "references": [
+    {
+      "path": "./features"
+    },
+    {
+      "path": "./src"
+    }
+  ]
 }

@@ -1,6 +1,6 @@
-const assert = require("assert");
-const { When, Then } = require("@cucumber/cucumber");
-const { Greeter } = require("../../src/index");
+import assert from "assert";
+import { When, Then } from "@cucumber/cucumber";
+import { Greeter } from "../../src/index";
 
 When("the greeter says hello", function () {
   const subject = new Greeter();

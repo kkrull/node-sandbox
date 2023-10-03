@@ -1,10 +1,9 @@
 {
   "author": "Kyle Krull",
-  "dependencies": {
-    "@cucumber/cucumber": "^9.5.1"
-  },
+  "dependencies": {},
   "description": "Try out Cucumber.js 8 with TypeScript.",
   "devDependencies": {
+    "@cucumber/cucumber": "^9.5.1",
     "@cucumber/pretty-formatter": "^1.0.0",
     "prettier": "3.0.3"
   },

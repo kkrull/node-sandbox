@@ -15,7 +15,8 @@
   "name": "cucumberjs-8",
   "scripts": {
     "format": "prettier --write .",
-    "test": "cucumber-js"
+    "test": "cucumber-js",
+    "types:check": "tsc --noEmit"
   },
   "version": "0.0.1"
 }

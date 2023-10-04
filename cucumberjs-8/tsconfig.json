@@ -1,25 +1,12 @@
 //https://aka.ms/tsconfig
-//TODO KDK: Try one tsconfig with paths
 {
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
-    "outDir": "./dist",
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "es2016",
-    "types": []
-  },
-  "exclude": ["node_modules"],
-  //Avoid compiling projects twice by only compiling from the project file
-  "files": [],
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "include": [
+    "./src/**/*.ts"
+  ],
   "references": [
     {
-      "path": "./features"
-    },
-    {
-      "path": "./src"
+      "path": "./features/tsconfig.json"
     }
   ]
 }

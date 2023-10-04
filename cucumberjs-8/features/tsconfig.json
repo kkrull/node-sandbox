@@ -5,9 +5,7 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       //Keeps tsc (with this tsconfig) and VS Code happy
-      "@/src/*": [
-        "../src/*"
-      ]
+      "@/src/*": ["../src/*"]
     },
     "resolveJsonModule": true
   }

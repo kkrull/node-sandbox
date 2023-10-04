@@ -17,8 +17,7 @@
   "scripts": {
     "format": "prettier --write .",
     "test": "cucumber-js",
-    "types:build": "tsc --build .",
-    "types:check": "tsc --noEmit"
+    "types:check": "tsc --noEmit -p tsconfig.json -p features/tsconfig.json"
   },
   "version": "0.0.1"
 }

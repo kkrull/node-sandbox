@@ -1,16 +1,12 @@
-# https://EditorConfig.org
+# https://editorconfig.org
+root = false
 
-root = true
+[*.{cjs,js}]
+quote_type = single
 
-[*]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = true
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
 
-[*.js]
-indent_size = 2
-indent_style = space
-
-[*.json]
-indent_size = 2
-indent_style = space
+[*.{ts,tsx}]
+quote_type = single

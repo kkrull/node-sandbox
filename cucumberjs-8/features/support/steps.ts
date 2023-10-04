@@ -1,6 +1,6 @@
 import assert from 'assert';
 import { When, Then } from '@cucumber/cucumber';
-import { Greeter } from '../../src/index';
+import { Greeter } from '../../src/greeter';
 
 let whatIHeard: string;
 

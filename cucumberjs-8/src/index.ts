@@ -1,6 +1,6 @@
 class Greeter {
   sayHello() {
-    return "Hello";
+    return 'Hello';
   }
 }
 

@@ -9,10 +9,6 @@
     "target": "es2016",
     "types": []
   },
-  "exclude": [
-    "../node_modules"
-  ],
-  "include": [
-    "./**/*.ts"
-  ]
+  "exclude": ["../node_modules"],
+  "include": ["./**/*.ts"]
 }

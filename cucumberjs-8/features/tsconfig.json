@@ -9,6 +9,6 @@
     "strict": true,
     /* cucumber-js */
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   }
 }

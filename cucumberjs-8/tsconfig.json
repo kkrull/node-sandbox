@@ -11,9 +11,7 @@
     "target": "es2016",
     "types": []
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   //Avoid compiling projects twice by only compiling from the project file
   "files": [],
   "references": [

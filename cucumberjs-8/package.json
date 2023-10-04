@@ -1,0 +1,23 @@
+{
+  "author": "Kyle Krull",
+  "description": "Try out Cucumber.js 8 with TypeScript.",
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.5.1",
+    "@cucumber/pretty-formatter": "^1.0.0",
+    "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^20.8.2",
+    "prettier": "3.0.3",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.2.2"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "name": "cucumberjs-8",
+  "scripts": {
+    "format": "prettier --write .",
+    "test": "cucumber-js",
+    "types:check": "tsc --noEmit -p tsconfig.json -p features/tsconfig.json"
+  },
+  "version": "0.0.1"
+}

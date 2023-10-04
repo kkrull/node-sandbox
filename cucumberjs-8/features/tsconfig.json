@@ -1,0 +1,12 @@
+//https://aka.ms/tsconfig
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      //Keeps tsc (with this tsconfig) and VS Code happy
+      "@/src/*": ["../src/*"]
+    },
+    "resolveJsonModule": true
+  }
+}

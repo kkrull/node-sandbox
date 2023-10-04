@@ -1,0 +1,11 @@
+//https://aka.ms/tsconfig
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "compilerOptions": {
+    //features/tsconfig has its own paths, but cucumber-js still needs this
+    "paths": {
+      "@/src/*": ["./src/*"]
+    }
+  },
+  "include": ["./src/**/*.ts"]
+}

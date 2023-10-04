@@ -1,0 +1,12 @@
+# https://editorconfig.org
+root = true
+
+[*.{cjs,js}]
+quote_type = single
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+
+[*.ts]
+quote_type = single

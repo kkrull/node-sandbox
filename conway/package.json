@@ -1,0 +1,23 @@
+{
+  "author": "",
+  "description": "",
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "name": "conway",
+  "scripts": {
+    "build": "ncc build ./src/index.js -o dist",
+    "format": "prettier -w src/*.js",
+    "start": "ncc run ./src/index.js",
+    "test": "mocha"
+  },
+  "version": "0.0.1",
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.0.3",
+    "@vercel/ncc": "^0.24.1",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.3.2"
+  }
+}

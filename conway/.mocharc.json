@@ -1,0 +1,14 @@
+{
+  "diff": true,
+  "extension": [
+    "js"
+  ],
+  "package": "./package.json",
+  "reporter": "spec",
+  "slow": 75,
+  "spec": [
+    "src/**/*.spec.js"
+  ],
+  "timeout": 2000,
+  "ui": "bdd"
+}

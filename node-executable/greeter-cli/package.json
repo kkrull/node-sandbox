@@ -1,0 +1,17 @@
+{
+  "author": "Kyle Krull",
+  "bin": {
+    "greeter-cli": "bin/main.js"
+  },
+  "description": "An attempt to install a script from this package",
+  "license": "MIT",
+  "main": "main.js",
+  "name": "@kkrull/greeter-cli",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.1",
+  "dependencies": {
+    "@kkrull/greeter-lib": "file:../greeter-lib"
+  }
+}

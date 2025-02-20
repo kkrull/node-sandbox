@@ -1,0 +1,11 @@
+{
+  "author": "Kyle Krull",
+  "description": "A library with a greeter function in plain node.js",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@kkrull/greeter-lib",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.1"
+}

@@ -1,0 +1,16 @@
+{
+  "author": "Kyle Krull",
+  "dependencies": {
+    "@kkrull/greeter-lib": "file:../greeter-lib"
+  },
+  "description": "A client that uses greeter-lib",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "greeter-client",
+  "scripts": {
+    "main:require-directory": "node require-directory.js",
+    "main:require-package-name": "node require-package-name.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.1"
+}

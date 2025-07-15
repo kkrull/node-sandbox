@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React: single</title>
+  </head>
+
+  <body>
+    <main div="content"></main>
+
+    <script type="module">
+      import { render } from 'react/ReactDOM';
+      import MermaidGraph from './react-single.tsx';
+
+      const domNode = document.getElementById('content')
+      ReactDOM.render(<MermaidGraph />, domNode);
+    </script>
+  </body>
+</html>

@@ -8,5 +8,8 @@
     "test": ""
   },
   "type": "module",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "mermaid": "^11.9.0"
+  }
 }

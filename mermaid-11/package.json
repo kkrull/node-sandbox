@@ -2,12 +2,12 @@
   "author": "Kyle Krull",
   "description": "",
   "license": "ISC",
-  "main": "index.js",
+  "main": "main.js",
   "name": "mermaid-11-hello",
   "scripts": {
-    "test": ""
+    "test": "node main.js"
   },
-  "type": "module",
+  "type": "commonjs",
   "version": "0.0.1",
   "dependencies": {
     "mermaid": "^11.9.0"

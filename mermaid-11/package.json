@@ -1,5 +1,8 @@
 {
   "author": "Kyle Krull",
+  "dependencies": {
+    "mermaid": "^11.9.0"
+  },
   "description": "",
   "devDependencies": {
     "express": "^5.1.0"

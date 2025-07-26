@@ -1,12 +1,13 @@
 {
-  "author": "",
+  "author": "Kyle Krull",
   "description": "",
   "license": "ISC",
-  "main": "index.js",
+  "main": "main.js",
   "name": "mermaid-11-hello",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "type": "commonjs",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "devDependencies": {
+    "express": "^5.1.0"
+  }
 }

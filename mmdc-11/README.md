@@ -1,4 +1,19 @@
-# `mmdc-hello`
+# `mmdc-11`
 
-Generate a Mermaid diagram with `mmdc`.
+Generate Mermaid diagrams with `mmdc`.
 
+## Install Tools
+
+```sh
+brew bundle install
+```
+
+## Build
+
+```sh
+make
+```
+
+## Enjoy
+
+Look at the output `.svg` files.

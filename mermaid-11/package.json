@@ -1,12 +1,12 @@
 {
-  "name": "mermaid-11-hello",
-  "version": "0.0.1",
+  "author": "",
   "description": "",
   "license": "ISC",
-  "author": "",
-  "type": "commonjs",
   "main": "index.js",
+  "name": "mermaid-11-hello",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "type": "commonjs",
+  "version": "0.0.1"
 }

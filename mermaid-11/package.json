@@ -1,13 +1,15 @@
 {
   "author": "Kyle Krull",
   "description": "",
+  "devDependencies": {
+    "express": "^5.1.0"
+  },
   "license": "ISC",
   "main": "main.js",
   "name": "mermaid-11-hello",
-  "scripts": {},
+  "scripts": {
+    "start": "node main.js"
+  },
   "type": "commonjs",
-  "version": "0.0.1",
-  "devDependencies": {
-    "express": "^5.1.0"
-  }
+  "version": "0.0.1"
 }
